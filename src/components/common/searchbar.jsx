@@ -8,8 +8,9 @@ const SearchBar = () => {
   const [apiData, setApiData] = useState([]);
   const [searchTextInput, setSearchTextInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [adCount, setAdCount] = useState(0);
   
-  const adCountString = `Sök yrke bland ${apiData.length} annonser`;
+  const adCountString = `Sök yrke bland ${adCount} annonser`;
 
   // const fetchLatestData = () => {
   //   const API = "http://82.102.1.109/api/joblistings";
@@ -22,15 +23,23 @@ const SearchBar = () => {
 
   const fetchSearchData = (event)  => {
     event.preventDefault();
-    const API = "http://82.102.1.109/api/joblistings/" + searchTextInput;
+    const API = "http://82.102.1.109//api/joblistings/" + searchTextInput;
     fetch(API)
       .then((response) => response.json())
       .then((data) => setApiData(data))
       .catch(err => console.error(err))
   }
 
+  const fetchAdCount = () => {
+    const API = "http://82.102.1.109//api/joblistings/count";
+    fetch(API)
+    .then((response) => response.json())
+    .then((data) => setAdCount(data))
+    .catch(err => console.error(err))
+  }
+
   useEffect(() => {
-    // fetchLatestData();
+    fetchAdCount();
   }, []);
   return (
     <div>
