@@ -1,0 +1,44 @@
+.Card {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    min-height: 8rem;
+    margin-top: 0.5rem;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.CardTitle {
+    color: rgb(105, 192, 243);
+    font-size: 20px;
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 20px;
+}
+.CardTitle A {
+    color: rgb(105, 192, 243);
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.CardTitle A:hover {
+    color: rgb(54, 174, 243);
+}
+
+.CardDescription {
+    color:hsla(0, 0%, 0%, 0.7);
+    font-size: 15px;
+    text-align: left;
+    padding: 0px 20px;
+    height: 2rem;
+    max-height: 2rem;
+}
+
+.CardPublicationDate {
+    color:hsla(0, 0%, 0%, 0.3);
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    padding: 5px 20px;
+}
