@@ -50,7 +50,7 @@ const SearchBar = () => {
               onChange={(e) => setSearchTextInput(e.target.value)}
               value={searchTextInput}
             />
-            <span className="SearchIcon">
+            <span className="SearchIcon" onClick={(e) => fetchSearchData(e)}>
               <Search /></span>
           </label>
         </form>

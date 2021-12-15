@@ -39,6 +39,11 @@
   z-index: 1;
 }
 
+.SearchIcon :hover {
+  cursor: pointer;
+  color:hsla(214, 100%, 50%, 0.6);
+}
+
 .CloseIcon {
   color:hsla(0, 100%, 50%, 0.5);
   font-size: 15px;
