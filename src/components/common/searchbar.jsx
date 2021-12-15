@@ -8,34 +8,29 @@ const SearchBar = () => {
   const [apiData, setApiData] = useState([]);
   const [searchTextInput, setSearchTextInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [apiSeachData, setApiSearchData] = useState([]);
   
   const adCountString = `Sök yrke bland ${apiData.length} annonser`;
 
-  const fetchLatestData = () => {
-    const API = "http://82.102.1.109/api/joblistings";
-    setIsLoading(true);
-    fetch(API)
-      .then((response) => response.json())
-      .then((data) => setApiData(data));
-    setIsLoading(false);
-  };
+  // const fetchLatestData = () => {
+  //   const API = "http://82.102.1.109/api/joblistings";
+  //   setIsLoading(true);
+  //   fetch(API)
+  //     .then((response) => response.json())
+  //     .then((data) => setApiData(data));
+  //   setIsLoading(false);
+  // };
 
-  const fetchSearchData = (event) => {
+  const fetchSearchData = (event)  => {
     event.preventDefault();
     const API = "http://82.102.1.109/api/joblistings/" + searchTextInput;
-    console.log(API);
-    const arr = ["skitjobb", "skitjobb2", "skitjobb3", "shitjobb4"];
-    setApiSearchData(arr);
-    // setIsLoading(true);
-    // fetch(API)
-    //   .then((response) => response.json())
-    //   .then((data) => setApiData(data))
-    // setIsLoading(false);
+    fetch(API)
+      .then((response) => response.json())
+      .then((data) => setApiData(data))
+      .catch(err => console.error(err))
   }
 
   useEffect(() => {
-    fetchLatestData();
+    // fetchLatestData();
   }, []);
   return (
     <div>
@@ -60,12 +55,9 @@ const SearchBar = () => {
         <Spinner />
       ) : (
         <div className="CardList">
-          {apiSeachData.length === 0 ? null : <div className="AdCount">Hittade {apiSeachData.length} annonser som matchar din sökning</div>}
+          {apiData.length !== 0 ? <div className="AdCount">Hittade {apiData.length} annonser som matchar din sökning</div> : null}
           {apiData.map((job, id) => (
             <JobCard key={id} job={job} />
-            /* job.headline.toLowerCase().includes(searchTextInput.toLowerCase())
-            ? [<JobCard key={id} job={job} />]
-            : null */
           ))}
         </div>
       )}
