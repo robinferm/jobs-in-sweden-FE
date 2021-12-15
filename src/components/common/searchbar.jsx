@@ -23,7 +23,7 @@ const SearchBar = () => {
 
   const fetchSearchData = (event)  => {
     event.preventDefault();
-    const API = "http://localhost/api/joblistings/" + searchTextInput;
+    const API = "http://82.102.1.109//api/joblistings/" + searchTextInput;
     fetch(API)
       .then((response) => response.json())
       .then((data) => setApiData(data))
@@ -31,7 +31,7 @@ const SearchBar = () => {
   }
 
   const fetchAdCount = () => {
-    const API = "http://localhost/api/joblistings/count";
+    const API = "http://82.102.1.109//api/joblistings/count";
     fetch(API)
     .then((response) => response.json())
     .then((data) => setAdCount(data))
