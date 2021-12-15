@@ -51,7 +51,7 @@ const SearchBar = () => {
             <input
               type="text"
               name="searchInput"
-              autoComplete="false"
+              autoComplete="off"
               placeholder={adCountString}
               onChange={(e) => setSearchTextInput(e.target.value)}
               value={searchTextInput}
