@@ -1,0 +1,74 @@
+.SearchContainer {
+  margin: 0 auto;
+  width: 100%;
+  min-height: 5em;
+  padding-left: 22px;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+}
+
+.SearchInput input {
+  width: 30rem;
+  height: 3rem;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  color:hsla(0, 0%, 0%, 0.7);
+  font-weight: 300;
+  border-radius: 6px;
+  background-color: rgb(235, 235, 235);
+  text-align: center;
+  z-index: -1;
+  align-content: center;
+  justify-content: center;
+}
+
+.SearchInput ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-size: 15px;
+  color:hsla(0, 0%, 0%, 0.4);
+  opacity: 0.4; /* Firefox */
+}
+
+.SearchIcon {
+  color:hsla(0, 0%, 7%, 0.2);
+  font-size: 22px;
+  left: -30px;
+  position: relative;
+  transition: all 200ms ease-in;
+  z-index: 1;
+}
+
+.SearchIcon :hover {
+  cursor: pointer;
+  color:hsla(214, 100%, 50%, 0.6);
+}
+
+.CloseIcon {
+  color:hsla(0, 100%, 50%, 0.5);
+  font-size: 15px;
+  font-weight: bolder;
+  position: relative;
+  transition: all 200ms ease-in-out;
+  left: 13rem;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.CloseIcon:hover {
+  color:hsla(214, 100%, 50%, 0.6);
+}
+
+.CardList {
+  width: 50%;
+  margin: auto;
+}
+
+.AdCount {
+  color:hsla(0, 0%, 7%, 0.5);
+  font-weight: 700;
+  text-align: left;
+}
+

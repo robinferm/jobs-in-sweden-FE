@@ -1,0 +1,13 @@
+.header {
+    padding: .5rem;
+    text-align: center;
+}
+.header h1 {
+    font-size: 5rem;
+    color: rgb(105, 192, 243);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
