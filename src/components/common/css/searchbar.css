@@ -28,6 +28,10 @@
   font-size: 15px;
   color:hsla(0, 0%, 0%, 0.4);
   opacity: 0.4; /* Firefox */
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 .SearchIcon {
@@ -70,5 +74,10 @@
   color:hsla(0, 0%, 7%, 0.5);
   font-weight: 700;
   text-align: left;
+}
+.FetchErrorMsg {
+  color:hsla(0, 0%, 7%, 0.5);
+  font-weight: 700;
+  text-align: center;
 }
 

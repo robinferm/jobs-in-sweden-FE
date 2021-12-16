@@ -9,7 +9,7 @@ const SearchBar = () => {
   const [searchTextInput, setSearchTextInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [adCount, setAdCount] = useState(0);
-  
+
   const adCountString = `Sök yrke bland ${adCount} annonser`;
 
   // const fetchLatestData = () => {
@@ -21,22 +21,24 @@ const SearchBar = () => {
   //   setIsLoading(false);
   // };
 
-  const fetchSearchData = (event)  => {
+  const fetchSearchData = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     const API = "http://82.102.1.109/api/joblistings/" + searchTextInput;
-    fetch(API)
+    await fetch(API)
       .then((response) => response.json())
       .then((data) => setApiData(data))
-      .catch(err => console.error(err))
-  }
+      .catch((err) => console.error(err));
+    setIsLoading(false);
+  };
 
   const fetchAdCount = () => {
     const API = "http://82.102.1.109/api/joblistings/count";
     fetch(API)
-    .then((response) => response.json())
-    .then((data) => setAdCount(data))
-    .catch(err => console.error(err))
-  }
+      .then((response) => response.json())
+      .then((data) => setAdCount(data))
+      .catch((err) => console.error(err));
+  };
 
   useEffect(() => {
     fetchAdCount();
@@ -49,22 +51,31 @@ const SearchBar = () => {
             <input
               type="text"
               name="searchInput"
-              autoComplete="false"
+              autoComplete="off"
               placeholder={adCountString}
               onChange={(e) => setSearchTextInput(e.target.value)}
               value={searchTextInput}
             />
             <span className="SearchIcon" onClick={(e) => fetchSearchData(e)}>
-              <Search /></span>
+              <Search />
+            </span>
           </label>
         </form>
-        {searchTextInput.length > 0 ? <span className="CloseIcon" onClick={(e) => setSearchTextInput("")}>Rensa</span> : null}
+        {searchTextInput.length > 0 ? (
+          <span className="CloseIcon" onClick={(e) => setSearchTextInput("")}>
+            Rensa
+          </span>
+        ) : null}
       </div>
       {isLoading ? (
         <Spinner />
       ) : (
         <div className="CardList">
-          {apiData.length !== 0 ? <div className="AdCount">Hittade {apiData.length} annonser som matchar din sökning</div> : null}
+          {apiData.length !== 0 ? (
+            <div className="AdCount">
+              Hittade {apiData.length} annonser som matchar din sökning
+            </div>
+          ) : null}
           {apiData.map((job, id) => (
             <JobCard key={id} job={job} />
           ))}
