@@ -28,6 +28,10 @@
   font-size: 15px;
   color:hsla(0, 0%, 0%, 0.4);
   opacity: 0.4; /* Firefox */
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 .SearchIcon {
@@ -45,12 +49,11 @@
 }
 
 .CloseIcon {
-  color:hsla(0, 100%, 50%, 0.5);
+  color:hsla(0, 0%, 0%, 0.5);
   font-size: 15px;
-  font-weight: bolder;
   position: relative;
-  transition: all 200ms ease-in-out;
   left: 13rem;
+  cursor: pointer;
   -webkit-user-select: none; /* Safari */        
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
@@ -58,7 +61,24 @@
 }
 
 .CloseIcon:hover {
-  color:hsla(214, 100%, 50%, 0.6);
+  color:hsla(0, 100%, 50%, 0.5);
+}
+
+.CancelFetchContainer {
+  margin-top: 1rem;
+}
+
+.CancelFetchText {
+  color:hsla(0, 0%, 0%, 0.5);
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.CancelFetchText:hover {
+  color:hsla(0, 100%, 50%, 0.5);
 }
 
 .CardList {
@@ -68,7 +88,12 @@
 
 .AdCount {
   color:hsla(0, 0%, 7%, 0.5);
-  font-weight: 700;
   text-align: left;
+}
+
+.FetchErrorMsg {
+  color:hsla(0, 0%, 7%, 0.5);
+  font-weight: 700;
+  text-align: center;
 }
 
