@@ -7,7 +7,7 @@ import Spinner from "../common/loadspinner.jsx";
 const SearchBar = () => {
   const [apiData, setApiData] = useState([]);
   const [searchTextInput, setSearchTextInput] = useState("");
-  const [isLoading, setIsLoading] = useState( );
+  const [isLoading, setIsLoading] = useState(false);
   const [adCount, setAdCount] = useState(0);
 
   const adCountString = `Sök yrke bland ${adCount} annonser`;
