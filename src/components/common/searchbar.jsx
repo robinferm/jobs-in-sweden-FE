@@ -24,6 +24,14 @@ const SearchBar = () => {
     setIsLoading(false);
   };
 
+  // const fetchLatestData = () => {
+  //   const API = "http://82.102.1.109/api/joblistings";
+  //   fetch(API)
+  //     .then((response) => response.json())
+  //     .then((data) => setApiData(data))
+  //     .catch((err) => console.error(err));
+  // }
+
   const fetchAdCount = () => {
     const API = "http://82.102.1.109/api/joblistings/count";
     fetch(API)
@@ -34,6 +42,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     fetchAdCount();
+    fetchLatestData();
   }, []);
   return (
     <div>
@@ -60,7 +69,10 @@ const SearchBar = () => {
         ) : null}
       </div>
       {isLoading ? (
+        <div>
         <Spinner />
+        <div className="CancelFetchContainer"><span className="CancelFetchText">Avbryt sökning</span></div>
+        </div>
       ) : (
         <div className="CardList">
           {apiData.length !== 0 ? (
