@@ -42,7 +42,6 @@ const SearchBar = () => {
 
   useEffect(() => {
     fetchAdCount();
-    fetchLatestData();
   }, []);
   return (
     <div>
