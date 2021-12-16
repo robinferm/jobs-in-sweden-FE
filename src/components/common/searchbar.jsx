@@ -16,10 +16,10 @@ const SearchBar = () => {
     event.preventDefault();
     if(searchTextInput === "") return;
     setIsLoading(true);
-    const API = "http://82.102.1.109/api/joblistings/" + searchTextInput;
+    const API = "http://82.102.1.109/api/joblistings/" + searchTextInput + "/1";
     await fetch(API)
       .then((response) => response.json())
-      .then((data) => setApiData(data))
+      .then((data) => setApiData(data.data))
       .catch((err) => console.error(err));
     setIsLoading(false);
   };
@@ -79,8 +79,8 @@ const SearchBar = () => {
               Hittade {apiData.length} annonser som matchar din sökning
             </div>
           ) : null}
-          {apiData.map((job, id) => (
-            <JobCard key={id} job={job} />
+          {apiData.map((job) => (
+            <JobCard key={job.id} job={job} />
           ))}
         </div>
       )}
