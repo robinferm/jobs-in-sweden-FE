@@ -7,7 +7,6 @@ const JobCard = (props) => {
     return (
         <div className="Card">
             <div className="CardTitle"><Link to={props.job.id}>{props.job.headline}</Link></div>
-            <div className="CardDescription">{props.job.description.text === null ? null : null}</div>
             <div className="CardDescription">{props.job.ort}</div>
             <div className="CardPublicationDate">Skapad: {publicationString}</div>
         </div>

@@ -12,17 +12,9 @@ const SearchBar = () => {
 
   const adCountString = `Sök yrke bland ${adCount} annonser`;
 
-  // const fetchLatestData = () => {
-  //   const API = "http://82.102.1.109/api/joblistings";
-  //   setIsLoading(true);
-  //   fetch(API)
-  //     .then((response) => response.json())
-  //     .then((data) => setApiData(data));
-  //   setIsLoading(false);
-  // };
-
   const fetchSearchData = async (event) => {
     event.preventDefault();
+    if(searchTextInput === "") return;
     setIsLoading(true);
     const API = "http://82.102.1.109/api/joblistings/" + searchTextInput;
     await fetch(API)
@@ -31,6 +23,14 @@ const SearchBar = () => {
       .catch((err) => console.error(err));
     setIsLoading(false);
   };
+
+  // const fetchLatestData = () => {
+  //   const API = "http://82.102.1.109/api/joblistings";
+  //   fetch(API)
+  //     .then((response) => response.json())
+  //     .then((data) => setApiData(data))
+  //     .catch((err) => console.error(err));
+  // }
 
   const fetchAdCount = () => {
     const API = "http://82.102.1.109/api/joblistings/count";
@@ -68,7 +68,10 @@ const SearchBar = () => {
         ) : null}
       </div>
       {isLoading ? (
+        <div>
         <Spinner />
+        <div className="CancelFetchContainer"><span className="CancelFetchText">Avbryt sökning</span></div>
+        </div>
       ) : (
         <div className="CardList">
           {apiData.length !== 0 ? (
