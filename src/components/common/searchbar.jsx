@@ -3,6 +3,7 @@ import JobCard from "./jobcard.jsx";
 import { useEffect, useState } from "react";
 import { Search } from "react-bootstrap-icons";
 import Spinner from "../common/loadspinner.jsx";
+import SkeletonLoader from "./skeletonLoader";
 
 const SearchBar = () => {
   const [apiData, setApiData] = useState([]);
@@ -68,9 +69,12 @@ const SearchBar = () => {
         ) : null}
       </div>
       {isLoading ? (
-        <div>
-        <Spinner />
-        <div className="CancelFetchContainer"><span className="CancelFetchText">Avbryt sökning</span></div>
+        <div className="loadingWrapper">
+        <SkeletonLoader />
+        <SkeletonLoader />
+        <SkeletonLoader />
+        <SkeletonLoader />
+        <SkeletonLoader />
         </div>
       ) : (
         <div className="CardList">
