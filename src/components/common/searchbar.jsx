@@ -2,7 +2,6 @@ import "./css/searchbar.css";
 import JobCard from "./jobcard.jsx";
 import { useEffect, useState } from "react";
 import { Search } from "react-bootstrap-icons";
-import Spinner from "../common/loadspinner.jsx";
 import SkeletonLoader from "./skeletonLoader";
 
 const SearchBar = () => {
