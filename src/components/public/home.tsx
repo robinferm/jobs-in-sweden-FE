@@ -1,8 +1,7 @@
 import "./css/home.css";
 import React, { useState, useEffect } from "react";
-import Header from "../common/header.jsx";
-import Spinner from "../common/loadspinner.jsx";
-import SearchBar from "../common/searchbar.jsx";
+import Header from "../common/header";
+import SearchBar from "../common/searchbar";
 
 const Home = () => {
   const [isLoading, setLoading] = useState(false);
@@ -16,7 +15,6 @@ const Home = () => {
     <div className="wrapper">
       <Header />
       <SearchBar />
-      {isLoading ? <Spinner /> : null}
     </div>
   );
 };
