@@ -1,7 +1,7 @@
 import "./css/searchbar.css";
 import JobCard from "./jobcard";
 import { useEffect, useState } from "react";
-import { Search } from "react-bootstrap-icons";
+import { Search, Gear } from "react-bootstrap-icons";
 import SkeletonLoader from "./skeletonLoader";
 
 const SearchBar = () => {
@@ -23,14 +23,6 @@ const SearchBar = () => {
       .catch((err) => console.error(err));
     setIsLoading(false);
   };
-
-  // const fetchLatestData = () => {
-  //   const API = "http://82.102.1.109/api/joblistings";
-  //   fetch(API)
-  //     .then((response) => response.json())
-  //     .then((data) => setApiData(data))
-  //     .catch((err) => console.error(err));
-  // }
 
   const fetchAdCount = () => {
     const API = "http://82.102.1.109/api/joblistings/count";
@@ -56,6 +48,9 @@ const SearchBar = () => {
               onChange={(e) => setSearchTextInput(e.target.value)}
               value={searchTextInput}
             />
+            {/* <span className="FilterIcon" onClick={(e) => console.log(e)}>
+              <Gear />
+            </span> */}
             <span className="SearchIcon" onClick={(e) => fetchSearchData(e)}>
               <Search />
             </span>
