@@ -1,11 +1,104 @@
-.header {
-    padding: .5rem;
-    text-align: center;
+.header-content {
+    color: white;
+    text-align: left;
+    margin: 0 auto;
+    width: 85%;
 }
-.header h1 {
-    font-size: 5rem;
-    color: rgb(105, 192, 243);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+.header-content h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.header-content-text p {
+    color: gainsboro;
+    font-size: 16px;
+}
+
+.header-content-text {
+    padding-top: 5rem;
+}
+
+.header-content-searchbar {
+    text-align: left;
+    color: white;
+    padding-top: 2rem;
+}
+
+.header-content-searchicon {
+    background-color: white;
+    color: rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-size: 2rem;
+    padding: 2px 10px;
+    padding-bottom: 8px;
+}
+
+.header-content-reseticon {
+    background-color: white;
+    color: rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-size: 2rem;
+    padding: 2px 10px;
+    padding-bottom: 8px;
+    cursor: pointer;
+}
+
+.header-content-button {
+    background-color: rgba(242, 76, 0, 1);
+    height: 3rem;
+    width: fit-content;
+    padding: 11px 40px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.header-content-button :hover {
+    background-color: #000000;
+}
+
+.SearchInput label {
+    width: 100%;
+}
+
+.SearchInput input {
+    width: 40%;
+    max-width: 80%;
+    height: 3rem;
+    outline: none;
+    border: none;
+    font-size: 24px;
+    color:hsla(0, 0%, 0%, 0.7);
+    font-weight: 300;
+    background-color: rgb(255, 255, 255);
+    text-align: left;
+    padding-left: 10px;
+    box-shadow: black;
+  }
+  
+  .SearchInput ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-size: 15px;
+    text-align: center;
+    color:hsla(0, 0%, 0%, 0.4);
+    opacity: 0.4; /* Firefox */
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+  }
+
+.nonTargetable {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */

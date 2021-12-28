@@ -37,7 +37,7 @@
 .SearchIcon {
   color:hsla(0, 0%, 7%, 0.2);
   font-size: 22px;
-  left: -30px;
+  left: -60px;
   position: relative;
   transition: all 200ms ease-in;
   z-index: 1;
@@ -45,7 +45,21 @@
 
 .SearchIcon :hover {
   cursor: pointer;
-  color:hsla(214, 100%, 50%, 0.6);
+  color: rgba(2,0,36,1);
+}
+
+.FilterIcon {
+  color:hsla(0, 0%, 7%, 0.2);
+  font-size: 22px;
+  left: -70px;
+  position: relative;
+  transition: all 200ms ease-in;
+  z-index: 1;
+}
+
+.FilterIcon :hover {
+  cursor: pointer;
+  color: rgba(2,0,36,1);
 }
 
 .CloseIcon {
