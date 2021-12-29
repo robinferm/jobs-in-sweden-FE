@@ -1,4 +1,4 @@
-import "./css/jobcard.css"
+import "./css/JobCard.css"
 import { Link } from 'react-router-dom';
 
 const JobCard = (props) => {

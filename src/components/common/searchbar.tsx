@@ -1,4 +1,4 @@
-import "./css/searchbar.css";
+import "./css/SearchBar.css";
 import JobCard from "./JobCard";
 import { useEffect, useState } from "react";
 import { Search, Gear } from "react-bootstrap-icons";

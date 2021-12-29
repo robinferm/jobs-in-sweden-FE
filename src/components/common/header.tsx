@@ -1,4 +1,4 @@
-import "./css/header.css";
+import "./css/Header.css";
 import { useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import { Search, XCircleFill, Sliders } from "react-bootstrap-icons";
