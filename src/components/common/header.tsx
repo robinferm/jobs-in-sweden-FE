@@ -3,7 +3,11 @@ import { useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import { Search, XCircleFill, Sliders } from "react-bootstrap-icons";
 
-const Header = (props) => {
+interface HeaderData {
+    adCount: number;
+}
+
+const Header = (props:HeaderData) => {
   const [searchTextInput, setSearchTextInput] = useState("");
 
   const adCountString = `Sök yrke bland ${props.adCount} annonser`;
