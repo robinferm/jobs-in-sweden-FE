@@ -2,7 +2,11 @@
     color: white;
     text-align: left;
     margin: 0 auto;
-    width: 85%;
+    width: 70%;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 .header-content h1 {
@@ -16,7 +20,7 @@
 }
 
 .header-content-text {
-    padding-top: 5rem;
+    padding-top: 3rem;
 }
 
 .header-content-searchbar {
@@ -27,7 +31,7 @@
 
 .header-content-searchicon {
     background-color: white;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(27, 152, 224, 0.5);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     font-size: 2rem;
@@ -47,10 +51,10 @@
 }
 
 .header-content-button {
-    background-color: rgba(242, 76, 0, 1);
+    background-color: rgb(27, 152, 224);
     height: 3rem;
     width: fit-content;
-    padding: 11px 40px;
+    padding: 11px 20px;
     font-size: 20px;
     font-weight: 600;
     text-align: center;
@@ -61,10 +65,29 @@
     border-bottom-right-radius: 20px;
     margin-right: 5px;
     cursor: pointer;
+    transition-duration: 0.2s;
 }
 
-.header-content-button :hover {
-    background-color: #000000;
+.header-content-filtericon {
+    background-color: rgb(255, 255, 255);
+    color: rgb(27, 152, 224);
+    height: 3rem;
+    padding: 6px 10px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.header-content-filtericon:hover {
+    color: rgba(242, 76, 0, 1);
+}
+
+.header-content-button:hover {
+    background-color: rgba(242, 76, 0, 1);
 }
 
 .SearchInput label {
@@ -73,7 +96,7 @@
 
 .SearchInput input {
     width: 40%;
-    max-width: 80%;
+    max-width: 330px;
     height: 3rem;
     outline: none;
     border: none;
@@ -82,12 +105,10 @@
     font-weight: 300;
     background-color: rgb(255, 255, 255);
     text-align: left;
-    padding-left: 10px;
-    box-shadow: black;
   }
   
   .SearchInput ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    font-size: 15px;
+    font-size: 16px;
     text-align: center;
     color:hsla(0, 0%, 0%, 0.4);
     opacity: 0.4; /* Firefox */

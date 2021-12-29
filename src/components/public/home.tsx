@@ -6,20 +6,29 @@ import { Row, Col, Container } from "react-bootstrap";
 
 const Home = () => {
   const [isLoading, setLoading] = useState(false);
+  const [totalAdCount, setTotalAdCount] = useState(0);
+
+  const fetchAdCount = () => {
+    const API = "http://82.102.1.109/api/joblistings/count";
+    fetch(API)
+      .then((response) => response.json())
+      .then((data) => setTotalAdCount(data))
+      .catch((err) => console.error(err));
+  };
 
   useEffect(() => {
-    setLoading(false);
+    fetchAdCount();
   }, []);
 
   return (
     <div className="wrapper">
-      <Header />
+      <Header adCount={totalAdCount}/>
       <Container fluid className="content">
         <Row>
-          <Col sm={4} style={{ color:"white", backgroundColor: "black", height: "50rem" }}>
-          <p>Sparade annonser</p>
+          <Col sm={3} style={{ height: "50rem" }}>
+          <p>Dina sparade annonser</p>
           </Col>
-          <Col sm={8} style={{ backgroundColor: "white", height: "50rem" }}>
+          <Col sm={9} style={{ height: "50rem" }}>
             <p>Annonser Statistik</p>
             <SkeletonLoader/>
             <SkeletonLoader/>
