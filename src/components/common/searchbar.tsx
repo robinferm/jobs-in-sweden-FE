@@ -1,5 +1,5 @@
 import "./css/searchbar.css";
-import JobCard from "./jobcard";
+import JobCard from "./JobCard";
 import { useEffect, useState } from "react";
 import { Search, Gear } from "react-bootstrap-icons";
 import SkeletonLoader from "./skeletonLoader";
