@@ -32,11 +32,10 @@ const AdCardList = (props: AdCardData) => {
               : props.apiData.map((job) => <JobCard key={job.id} job={job} />)}
           </Row>
         </Row>
-        <Row style={{ textAlign: "center" }}>
-          <p>Sida: {props.pageNumber}</p>
+        <Row style={{ textAlign: "center", paddingTop:"1rem" }}>
           <Col>
             <Button
-              variant="primary"
+              variant="secondary"
               size="sm"
               onClick={(e) =>
                 props.pageNumber !== 1
@@ -47,26 +46,26 @@ const AdCardList = (props: AdCardData) => {
               Föregående
             </Button>{" "}
             <Button
-              variant="primary"
+              variant="secondary"
               size="sm"
               onClick={(e) => props.recieveDataFromAdCardListChild(1)}
             >
               1
             </Button>{" "}
-            <Button variant="primary" size="sm">
+            <Button variant="secondary" size="sm">
               {props.pageNumber + 1}
             </Button>{" "}
-            <Button variant="primary" size="sm">
+            <Button variant="secondary" size="sm">
               {props.pageNumber + 2}
             </Button>{" "}
-            <Button variant="primary" size="sm">
+            <Button variant="secondary" size="sm">
               {props.pageNumber + 3}
             </Button>{" "}
-            <Button variant="primary" size="sm">
+            <Button variant="secondary" size="sm">
               {props.pageNumber + 4}
             </Button>{" "}
             <Button
-              variant="primary"
+              variant="secondary"
               size="sm"
               onClick={(e) =>
                 props.recieveDataFromAdCardListChild(props.pageNumber + 1)
