@@ -6,6 +6,7 @@ import { borderColor } from "@mui/system";
 
 interface AdCardData {
   pageNumber: number;
+  isLoading: boolean;
   recieveDataFromAdCardListChild;
   apiData;
 }
@@ -38,7 +39,7 @@ const AdCardList = (props: AdCardData) => {
               variant="secondary"
               size="sm"
               onClick={(e) =>
-                props.pageNumber !== 1
+                props.pageNumber !== 1 && !props.isLoading
                   ? props.recieveDataFromAdCardListChild(props.pageNumber - 1)
                   : null
               }
@@ -48,7 +49,7 @@ const AdCardList = (props: AdCardData) => {
             <Button
               variant="secondary"
               size="sm"
-              onClick={(e) => props.recieveDataFromAdCardListChild(1)}
+              onClick={(e) => !props.isLoading ? props.recieveDataFromAdCardListChild(1) : null}
             >
               1
             </Button>{" "}
@@ -67,8 +68,8 @@ const AdCardList = (props: AdCardData) => {
             <Button
               variant="secondary"
               size="sm"
-              onClick={(e) =>
-                props.recieveDataFromAdCardListChild(props.pageNumber + 1)
+              onClick={(e) => !props.isLoading ?
+                props.recieveDataFromAdCardListChild(props.pageNumber + 1) : null
               }
             >
               Nästa

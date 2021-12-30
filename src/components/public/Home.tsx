@@ -17,7 +17,7 @@ const Home = () => {
     setCurrentPage(page);
   };
 
-  // Fetch
+  // Fetch current count of ads in the DB
   const fetchAdCount = () => {
     const API = "http://82.102.1.109/api/joblistings/count";
     fetch(API)
@@ -26,7 +26,8 @@ const Home = () => {
       .catch((err) => console.error(err));
   };
 
-  const fetchSearchData = async () => {
+  //
+  const fetchLatestAds = async () => {
     setIsLoading(true);
     const API = "http://82.102.1.109/api/joblistings/javascript/" + currentPage;
     await fetch(API)
@@ -38,7 +39,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchAdCount();
-    fetchSearchData();
+    fetchLatestAds();
   }, [currentPage]);
 
   return (
@@ -69,6 +70,7 @@ const Home = () => {
               apiData={latestAdApiData}
               pageNumber={currentPage}
               recieveDataFromAdCardListChild={recieveDataFromAdCardListChild}
+              isLoading={isLoading}
             />
           </Col>
         </Row>
