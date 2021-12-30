@@ -1,14 +1,20 @@
-import "./css/header.css";
+import "./css/Header.css";
 import { useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
-import { Search, XCircleFill } from "react-bootstrap-icons";
+import { Search, XCircleFill, Sliders } from "react-bootstrap-icons";
 
-const Header = () => {
+interface HeaderData {
+    adCount: number;
+}
+
+const Header = (props:HeaderData) => {
   const [searchTextInput, setSearchTextInput] = useState("");
+
+  const adCountString = `Sök yrke bland ${props.adCount} annonser`;
   return (
-    <Container fluid style={{ height: "30rem", background: "rgb(39, 38, 53)" }}>
+    <Container fluid style={{ height: "25rem", background: "rgb(39, 38, 53)" }}>
       <Row>
-        <Col sm style={{ height: "30rem" }}>
+        <Col sm style={{ height: "30rem"}}>
           <Col className="header-content">
             <Row>
               <Col
@@ -23,22 +29,23 @@ const Header = () => {
             </Row>
             <Row className="header-content-text">
               <h1>
-                Hitta, jämför och boka tid hos en tandläkare nära dig, smidigt
-                och enkelt online!
+                Se statistik och lediga jobb över hela Sverige!
               </h1>
               <p>
-                Hitta tandläkare när dig eller ring vår kundtjänst på
-                tandläkare.se så hjälper vi dig att boka
+                Hitta din nästa <span style={{color: "rgba(242, 76, 0, 1)", fontWeight:"700"}}>drömarbetsplats </span> 
+                med ett fåtal klick och se<br/>vilka <span style={{color: "rgba(242, 76, 0, 1)", fontWeight:"700"}}>yrken </span>
+                arbetsmarknaden skriker efter just nu
               </p>
             </Row>
             <Row className="header-content-searchbar">
-              <p>Hitta yrken nära dig</p>
+              <p>Sök på ett eller flera ord</p>
               <form className="SearchInput">
                 <label>
                   {searchTextInput.length > 0 ? (
                     <span
                       onClick={(e) => setSearchTextInput("")}
                       className="header-content-reseticon"
+                      title="Radera text"
                     >
                       <XCircleFill />
                     </span>
@@ -51,11 +58,12 @@ const Header = () => {
                     type="text"
                     name="searchInput"
                     autoComplete="off"
-                    placeholder={"12121231231"}
+                    placeholder={props.adCount === 0 ? null : adCountString}
                     onChange={(e) => setSearchTextInput(e.target.value)}
                     value={searchTextInput}
                   />
-                  <div className="header-content-button">Hitta</div>
+                  <span className="header-content-filtericon" title="Filtrera sökresultat" ><Sliders/></span>
+                  <div className="header-content-button" title="Påbörja sökning">Sök</div>
                 </label>
               </form>
             </Row>
