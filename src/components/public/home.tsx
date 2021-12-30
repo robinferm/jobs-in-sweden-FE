@@ -47,7 +47,8 @@ const Home = () => {
       <Header adCount={totalAdCount} />
       <Container fluid className="content">
         <Row>
-          <Col sm={3} style={{ height: "50rem", padding: "0px" }}>
+          {/* This should be its own component */}
+          <Col sm={4} style={{ height: "50rem", padding: "0px" }}>
             <Container
               style={{
                 minHeight: "50rem",
@@ -64,8 +65,7 @@ const Home = () => {
               <p>Sparade annonser</p>
             </Container>
           </Col>
-          <Col sm={9} style={{ height: "50rem", padding:"0px" }}>
-            {/* <p>Annonser Statistik</p> */}
+          <Col sm={8} style={{ height: "50rem", padding:"0px" }}>
             <AdCardList
               apiData={setLatestAdApiData}
               pageNumber={currentPage}
