@@ -4,7 +4,6 @@ import Header from "../common/Header";
 import SkeletonLoader from "../common/SkeletonLoader";
 import AdCardList from "../common/AdCardList";
 import { Row, Col, Container } from "react-bootstrap";
-import { NONAME } from "dns";
 
 const Home = () => {
   const [latestAdApiData, setLatestAdApiData] = useState([]);
