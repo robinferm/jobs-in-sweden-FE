@@ -1,5 +1,5 @@
 .Card {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(196, 194, 194, 0.1);
     width: 100%;
     min-height: 8rem;
     margin-top: 0.5rem;
@@ -10,7 +10,7 @@
 }
 
 .Card:hover {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(147, 221, 255, 0.1);
 }
 
 

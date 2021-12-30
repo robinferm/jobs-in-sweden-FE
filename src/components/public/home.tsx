@@ -65,9 +65,9 @@ const Home = () => {
               <p>Sparade annonser</p>
             </Container>
           </Col>
-          <Col sm={8} style={{ height: "50rem", padding:"0px" }}>
+          <Col sm={8} style={{ padding:"0px" }}>
             <AdCardList
-              apiData={setLatestAdApiData}
+              apiData={latestAdApiData}
               pageNumber={currentPage}
               recieveDataFromAdCardListChild={recieveDataFromAdCardListChild}
             />
