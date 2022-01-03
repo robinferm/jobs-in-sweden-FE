@@ -1,8 +1,8 @@
-import "./css/searchbar.css";
-import JobCard from "./jobcard.jsx";
+import "./css/SearchBar.css";
+import JobCard from "./JobCard";
 import { useEffect, useState } from "react";
 import { Search } from "react-bootstrap-icons";
-import Spinner from "../common/loadspinner.jsx";
+import SkeletonLoader from "./skeletonLoader";
 
 const SearchBar = () => {
   const [apiData, setApiData] = useState([]);
@@ -16,21 +16,13 @@ const SearchBar = () => {
     event.preventDefault();
     if(searchTextInput === "") return;
     setIsLoading(true);
-    const API = "http://82.102.1.109/api/joblistings/" + searchTextInput + "/1";
+    const API = "http://82.102.1.109/api/joblistings/search" + searchTextInput + "/1";
     await fetch(API)
       .then((response) => response.json())
       .then((data) => setApiData(data.data))
       .catch((err) => console.error(err));
     setIsLoading(false);
   };
-
-  // const fetchLatestData = () => {
-  //   const API = "http://82.102.1.109/api/joblistings";
-  //   fetch(API)
-  //     .then((response) => response.json())
-  //     .then((data) => setApiData(data))
-  //     .catch((err) => console.error(err));
-  // }
 
   const fetchAdCount = () => {
     const API = "http://82.102.1.109/api/joblistings/count";
@@ -56,8 +48,11 @@ const SearchBar = () => {
               onChange={(e) => setSearchTextInput(e.target.value)}
               value={searchTextInput}
             />
+            {/* <span className="FilterIcon" onClick={(e) => console.log(e)}>
+              <Gear />
+            </span> */}
             <span className="SearchIcon" onClick={(e) => fetchSearchData(e)}>
-              <Search />
+              <Search/>
             </span>
           </label>
         </form>
@@ -68,9 +63,12 @@ const SearchBar = () => {
         ) : null}
       </div>
       {isLoading ? (
-        <div>
-        <Spinner />
-        <div className="CancelFetchContainer"><span className="CancelFetchText">Avbryt sökning</span></div>
+        <div className="loadingWrapper">
+        <SkeletonLoader />
+        <SkeletonLoader />
+        <SkeletonLoader />
+        <SkeletonLoader />
+        <SkeletonLoader />
         </div>
       ) : (
         <div className="CardList">

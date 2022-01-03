@@ -1,0 +1,272 @@
+/* For Mobile & under 768px width: */
+.header-content {
+  color: white;
+  text-align: left;
+  margin: 0 auto;
+  width: 90%;
+  -webkit-user-select: none; /* Safari */
+  /* -moz-user-select: none; Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.header-content h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.header-content-text p {
+  color: gainsboro;
+  font-size: 14px;
+}
+
+.header-content-text {
+  padding-top: 2rem;
+}
+
+.header-content-searchbar {
+  text-align: left;
+  color: white;
+}
+
+.header-content-searchbar p {
+    text-align: left;
+    font-size: 14px;
+  }
+
+.header-content-searchicon {
+  background-color: white;
+  color: rgba(27, 152, 224, 0.5);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  font-size: 2rem;
+  padding: 2px 10px;
+  padding-bottom: 8px;
+}
+
+.header-content-reseticon {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  font-size: 2rem;
+  padding: 2px 10px;
+  padding-bottom: 8px;
+  cursor: pointer;
+}
+
+.header-content-button {
+  background-color: rgb(27, 152, 224);
+  height: 3rem;
+  width: fit-content;
+  padding: 11px 20px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.header-content-filtericon {
+  background-color: rgb(255, 255, 255);
+  color: rgb(27, 152, 224);
+  height: 3rem;
+  padding: 6px 10px;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.header-content-filtericon:hover {
+  color: rgba(242, 76, 0, 1);
+}
+
+.header-content-button:hover {
+  background-color: rgba(242, 76, 0, 1);
+}
+
+.SearchInput label {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.SearchInput input {
+  width: 49%;
+  max-width: 330px;
+  height: 3rem;
+  padding-top: 5px;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  color: hsla(0, 0%, 0%, 0.7);
+  font-weight: 300;
+  background-color: rgb(255, 255, 255);
+  text-align: left;
+}
+
+.SearchInput ::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-size: 16px;
+  text-align: center;
+  color: hsla(0, 0%, 0%, 0.4);
+  opacity: 0.4; /* Firefox */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.nonTargetable {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop & bigger screens: */
+
+  .header-content {
+    color: white;
+    text-align: left;
+    margin: 0 auto;
+    width: 70%;
+    -webkit-user-select: none; /* Safari */
+    /* -moz-user-select: none; Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+  }
+
+  .header-content h1 {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .header-content-text p {
+    color: gainsboro;
+    font-size: 16px;
+  }
+
+  .header-content-text {
+    padding-top: 3rem;
+  }
+
+  .header-content-searchbar {
+    text-align: left;
+    color: white;
+    padding-top: 2rem;
+  }
+
+  .header-content-searchicon {
+    background-color: white;
+    color: rgba(27, 152, 224, 0.5);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-size: 2rem;
+    padding: 2px 10px;
+    padding-bottom: 8px;
+  }
+
+  .header-content-reseticon {
+    background-color: white;
+    color: rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-size: 2rem;
+    padding: 2px 10px;
+    padding-bottom: 8px;
+    cursor: pointer;
+  }
+
+  .header-content-button {
+    background-color: rgb(27, 152, 224);
+    height: 3rem;
+    width: fit-content;
+    padding: 11px 20px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+  }
+
+  .header-content-filtericon {
+    background-color: rgb(255, 255, 255);
+    color: rgb(27, 152, 224);
+    height: 3rem;
+    padding: 6px 10px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .header-content-filtericon:hover {
+    color: rgba(242, 76, 0, 1);
+  }
+
+  .header-content-button:hover {
+    background-color: rgba(242, 76, 0, 1);
+  }
+
+  .SearchInput label {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .SearchInput input {
+    width: 40%;
+    max-width: 330px;
+    height: 3rem;
+    margin-top: 5px;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    color: hsla(0, 0%, 0%, 0.7);
+    font-weight: 300;
+    background-color: rgb(255, 255, 255);
+    text-align: left;
+  }
+
+  .SearchInput ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-size: 16px;
+    text-align: center;
+    color: hsla(0, 0%, 0%, 0.4);
+    opacity: 0.4; /* Firefox */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+  }
+
+  .nonTargetable {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+  }
+}
