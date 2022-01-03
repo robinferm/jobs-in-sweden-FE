@@ -1,0 +1,32 @@
+/* For Mobile & under 768px width: */
+.MainContainer {
+  min-height: 50rem;
+  width: 100%;
+  padding-top: 1rem;
+  background-color: white;
+  border-top-right-radius: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(39, 38, 53, 0.1);
+}
+
+@media only screen and (max-width: 1135px) {
+  /* For desktop & bigger screens: */
+  .MainContainer {
+    border-top-left-radius: 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop & bigger screens: */
+  .MainContainer {
+    min-height: 50rem;
+    width: 100%;
+    padding-top: 1rem;
+    background-color: white;
+    border-top-right-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(39, 38, 53, 0.1);
+  }
+}

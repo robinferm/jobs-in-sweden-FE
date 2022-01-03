@@ -12,9 +12,9 @@ const Header = (props:HeaderData) => {
 
   const adCountString = `Sök yrke bland ${props.adCount} annonser`;
   return (
-    <Container fluid style={{ height: "25rem", background: "rgb(39, 38, 53)" }}>
+    <Container fluid style={{ height: "23rem", background: "rgb(39, 38, 53)" }}>
       <Row>
-        <Col sm style={{ height: "30rem"}}>
+        <Col sm style={{ height: "20rem"}}>
           <Col className="header-content">
             <Row>
               <Col

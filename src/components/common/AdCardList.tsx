@@ -13,17 +13,7 @@ interface AdCardData {
 const AdCardList = (props: AdCardData) => {
   return (
     <div>
-      <Container
-        style={{
-          height: "50rem",
-          paddingTop: "1rem",
-          backgroundColor: "white",
-          borderTopRightRadius: "20px",
-          borderStyle: "solid",
-          borderWidth: "1px",
-          borderColor: "rgba(39, 38, 53, 0.1)",
-        }}
-      >
+      <Container className="MainContainer">
         <Row>
           <p style={{ color: "gray" }}>Annonser Statistik</p>
           <Row>
@@ -32,7 +22,7 @@ const AdCardList = (props: AdCardData) => {
               : props.apiData.map((job) => <JobCard key={job.id} job={job} />)}
           </Row>
         </Row>
-        <Row style={{ textAlign: "center", paddingTop:"1rem" }}>
+        <Row style={{ textAlign: "center", paddingTop: "1rem" }}>
           <Col>
             <Button
               variant="secondary"
