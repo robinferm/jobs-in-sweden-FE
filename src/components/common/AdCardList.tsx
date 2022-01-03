@@ -54,7 +54,7 @@ const AdCardList = (props: AdCardData) => {
                 <Accordion flush>
                   {props.apiData === null
                     ? null
-                    : props.apiData.map((job) => (
+                    : props.apiData.map((job:any) => (
                         <JobCard key={job.id} job={job} />
                       ))}
                 </Accordion>
