@@ -1,6 +1,6 @@
 import "./css/AdCardList.css";
 import React from "react";
-import { Row, Col, Container, Button } from "react-bootstrap";
+import { Row, Col, Container, Button, Accordion } from "react-bootstrap";
 import JobCard from "./JobCard";
 
 interface AdCardData {
@@ -16,9 +16,13 @@ const AdCardList = (props: AdCardData) => {
         <Row>
           <p style={{ color: "gray" }}>Annonser Statistik</p>
           <Row>
-            {props.apiData === null
-              ? null
-              : props.apiData.map((job) => <JobCard key={job.id} job={job} />)}
+            <Accordion flush>
+              {props.apiData === null
+                ? null
+                : props.apiData.map((job) => (
+                    <JobCard key={job.id} job={job} />
+                  ))}
+            </Accordion>
           </Row>
         </Row>
         <Row style={{ textAlign: "center", paddingTop: "1rem" }}>
