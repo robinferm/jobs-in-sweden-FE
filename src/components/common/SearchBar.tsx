@@ -1,7 +1,7 @@
 import "./css/SearchBar.css";
 import JobCard from "./JobCard";
 import { useEffect, useState } from "react";
-import { Search, Gear } from "react-bootstrap-icons";
+import { Search } from "react-bootstrap-icons";
 import SkeletonLoader from "./skeletonLoader";
 
 const SearchBar = () => {
@@ -52,7 +52,7 @@ const SearchBar = () => {
               <Gear />
             </span> */}
             <span className="SearchIcon" onClick={(e) => fetchSearchData(e)}>
-              <Search />
+              <Search/>
             </span>
           </label>
         </form>

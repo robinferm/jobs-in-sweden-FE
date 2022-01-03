@@ -8,12 +8,17 @@ const Home = () => {
   const [latestAdApiData, setLatestAdApiData] = useState([]);
   const [searchBarText, setSearchBarText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isWatchingAdSection, SetIsWatchingAdSection] = useState(true);
   const [totalAdCount, setTotalAdCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Callback
   const recieveDataFromAdCardListChild = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const changeIsWatchingAdSection = (value: boolean) => {
+    SetIsWatchingAdSection(value);
   };
 
   // Fetch
@@ -56,6 +61,8 @@ const Home = () => {
               apiData={latestAdApiData}
               pageNumber={currentPage}
               recieveDataFromAdCardListChild={recieveDataFromAdCardListChild}
+              isWatchingAdSection={isWatchingAdSection}
+              changeIsWatchingAdSection={changeIsWatchingAdSection}
             />
           </Col>
         </Row>
