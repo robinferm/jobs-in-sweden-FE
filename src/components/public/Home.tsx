@@ -25,11 +25,11 @@ const Home = () => {
       .catch((err) => console.error(err));
   };
 
-
   useEffect(() => {
     const fetchSearchData = async () => {
       setIsLoading(true);
-      const API = "http://82.102.1.109/api/joblistings/javascript/" + currentPage;
+      const API =
+        "http://82.102.1.109/api/joblistings/javascript/" + currentPage;
       await fetch(API)
         .then((response) => response.json())
         .then((data) => setLatestAdApiData(data.data))

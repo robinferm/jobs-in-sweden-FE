@@ -1,5 +1,4 @@
 .Card {
-    background-color: rgba(196, 194, 194, 0.1);
     width: 100%;
     min-height: 8rem;
     margin-top: 0.5rem;
@@ -9,11 +8,6 @@
     cursor: pointer;
     margin-left: 0.75rem;
 }
-
-.Card:hover {
-    background-color: rgba(147, 221, 255, 0.1);
-}
-
 
 .CardTitle {
     color: rgb(105, 192, 243);
@@ -38,8 +32,7 @@
     font-size: 15px;
     text-align: left;
     padding: 0px 20px;
-    height: 2rem;
-    max-height: 2rem;
+    min-height: 2rem;
 }
 
 .CardPublicationDate {
