@@ -16,7 +16,7 @@ const SearchBar = () => {
     event.preventDefault();
     if(searchTextInput === "") return;
     setIsLoading(true);
-    const API = "http://82.102.1.109/api/joblistings/" + searchTextInput + "/1";
+    const API = "http://82.102.1.109/api/joblistings/search" + searchTextInput + "/1";
     await fetch(API)
       .then((response) => response.json())
       .then((data) => setApiData(data.data))

@@ -29,7 +29,7 @@ const Home = () => {
     const fetchSearchData = async () => {
       setIsLoading(true);
       const API =
-        "http://82.102.1.109/api/joblistings/javascript/" + currentPage;
+        "http://82.102.1.109/api/joblistings/search/javascript/" + currentPage;
       await fetch(API)
         .then((response) => response.json())
         .then((data) => setLatestAdApiData(data.data))
