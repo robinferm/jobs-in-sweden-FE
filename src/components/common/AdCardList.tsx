@@ -2,7 +2,6 @@ import "./css/AdCardList.css";
 import React from "react";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import JobCard from "./JobCard";
-import { borderColor } from "@mui/system";
 
 interface AdCardData {
   pageNumber: number;

@@ -1,7 +1,6 @@
 import "./css/Home.css";
 import React, { useState, useEffect } from "react";
 import Header from "../common/Header";
-import SkeletonLoader from "../common/SkeletonLoader";
 import AdCardList from "../common/AdCardList";
 import { Row, Col, Container } from "react-bootstrap";
 
@@ -26,17 +25,18 @@ const Home = () => {
       .catch((err) => console.error(err));
   };
 
-  const fetchSearchData = async () => {
-    setIsLoading(true);
-    const API = "http://82.102.1.109/api/joblistings/javascript/" + currentPage;
-    await fetch(API)
-      .then((response) => response.json())
-      .then((data) => setLatestAdApiData(data.data))
-      .catch((err) => console.error(err));
-    setIsLoading(false);
-  };
 
   useEffect(() => {
+    const fetchSearchData = async () => {
+      setIsLoading(true);
+      const API = "http://82.102.1.109/api/joblistings/javascript/" + currentPage;
+      await fetch(API)
+        .then((response) => response.json())
+        .then((data) => setLatestAdApiData(data.data))
+        .catch((err) => console.error(err));
+      setIsLoading(false);
+    };
+
     fetchAdCount();
     fetchSearchData();
   }, [currentPage]);
