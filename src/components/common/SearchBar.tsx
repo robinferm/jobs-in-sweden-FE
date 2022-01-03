@@ -5,14 +5,14 @@ import { Search } from "react-bootstrap-icons";
 import SkeletonLoader from "./skeletonLoader";
 
 const SearchBar = () => {
-  const [apiData, setApiData] = useState([]);
+  const [apiData, setApiData] = useState<any[]>([]);
   const [searchTextInput, setSearchTextInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [adCount, setAdCount] = useState(0);
 
   const adCountString = `Sök yrke bland ${adCount} annonser`;
 
-  const fetchSearchData = async (event) => {
+  const fetchSearchData = async (event:any) => {
     event.preventDefault();
     if(searchTextInput === "") return;
     setIsLoading(true);
