@@ -58,7 +58,7 @@ const Header = (props:HeaderData) => {
                     type="text"
                     name="searchInput"
                     autoComplete="off"
-                    placeholder={props.adCount === 0 ? null : adCountString}
+                    placeholder={props.adCount === 0 ? undefined : adCountString}
                     onChange={(e) => setSearchTextInput(e.target.value)}
                     value={searchTextInput}
                   />
