@@ -17,16 +17,15 @@ const AdCardList = (props: AdCardData) => {
     <div>
       <Container className="MainContainer">
         <Row>
-          <p style={{ color: "gray" }}>
             {props.isWatchingAdSection ? (
               <div>
                 <span
-                  style={{ cursor: "pointer", fontWeight: "500" }}
+                  style={{ color: "gray", cursor: "pointer", fontWeight: "500" }}
                 >
                   Annonser{" "}
                 </span>
                 <span
-                  style={{ cursor: "pointer" }}
+                  style={{ color: "gray", cursor: "pointer" }}
                   onClick={() => props.changeIsWatchingAdSection(false)}
                 >
                   Statistik
@@ -35,19 +34,18 @@ const AdCardList = (props: AdCardData) => {
             ) : (
               <div>
                 <span
-                  style={{ cursor: "pointer"}}
+                  style={{ color: "gray", cursor: "pointer"}}
                   onClick={() => props.changeIsWatchingAdSection(true)}
                 >
                   Annonser{" "}
                 </span>
                 <span
-                  style={{ cursor: "pointer", fontWeight: "500" }}
+                  style={{ color: "gray", cursor: "pointer", fontWeight: "500" }}
                 >
                   Statistik
                 </span>
               </div>
             )}
-          </p>
           <Row>
             {props.isWatchingAdSection ? (
               <div>
