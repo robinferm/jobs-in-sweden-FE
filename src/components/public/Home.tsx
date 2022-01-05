@@ -13,6 +13,7 @@ const Home = () => {
   const [totalAdCount, setTotalAdCount] = useState(0);
   const [searchCount, setSearchCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [prevPageNumber, setPrevPageNumber] = useState(1);
 
   // Callback function to receive what page number user is at on AdCardList.tsx
   const recieveDataFromAdCardListChild = (page: number) => {
@@ -33,13 +34,16 @@ const Home = () => {
   const changeIsSearching = () => {
     setIsSearching((prevSaved) => !prevSaved);
     setSearchBarText("");
+    setCurrentPage(prevPageNumber);
   }
 
   // Callback function to know when user request a new search for ads in Header.tsx
   const newSearch = async (event: any) => {
     event.preventDefault();
     if (searchBarText === "") return;
-    if (currentPage !== 1) setCurrentPage(1);
+    if (currentPage !== 1) {
+      setPrevPageNumber(currentPage);
+      setCurrentPage(1);} 
     setIsSearching(true);
     setSearchCount(searchCount + 1);
   };
