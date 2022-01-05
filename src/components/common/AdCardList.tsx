@@ -154,16 +154,17 @@ const AdCardList = (props: AdCardData) => {
                     >
                       Föregående
                     </Button>{" "}
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      onClick={(e) =>
-                        !props.isLoading
-                          ? props.recieveDataFromAdCardListChild(1)
-                          : null
-                      }
-                    >
-                      1
+                    {props.pageNumber !== 1 ? (
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={(e) => props.recieveDataFromAdCardListChild(1)}
+                      >
+                        1
+                      </Button>
+                    ) : null}{" "}
+                    <Button variant="primary" size="sm">
+                      {props.pageNumber}
                     </Button>{" "}
                     <Button variant="secondary" size="sm">
                       {props.pageNumber + 1}
