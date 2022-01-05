@@ -3,6 +3,7 @@
   color: white;
   text-align: left;
   margin: 0 auto;
+  margin-top: 1.5rem;
   width: 90%;
   -webkit-user-select: none; /* Safari */
   /* -moz-user-select: none; Firefox */
@@ -25,6 +26,7 @@
 }
 
 .header-content-searchbar {
+  margin-top: 2rem;
   text-align: left;
   color: white;
 }
@@ -142,6 +144,7 @@
     color: white;
     text-align: left;
     margin: 0 auto;
+    margin-top: .75rem;
     width: 70%;
     -webkit-user-select: none; /* Safari */
     /* -moz-user-select: none; Firefox */
@@ -167,6 +170,7 @@
     text-align: left;
     color: white;
     padding-top: 2rem;
+    margin-top: 0;
   }
 
   .header-content-searchicon {

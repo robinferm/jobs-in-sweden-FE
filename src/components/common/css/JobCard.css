@@ -9,8 +9,12 @@
     margin-left: 0.75rem;
 }
 
+.Card:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
 .CardTitle {
-    color: rgb(105, 192, 243);
+    color: darkslategray;
     font-size: 20px;
     font-weight: 600;
     text-align: left;
