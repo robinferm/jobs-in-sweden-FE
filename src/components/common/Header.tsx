@@ -5,10 +5,12 @@ import { Search, XCircleFill, Sliders } from "react-bootstrap-icons";
 
 interface HeaderData {
     adCount: number;
+    searchBarText: string;
+    searchBarResult: any;
+    newSearch: any;
 }
 
 const Header = (props:HeaderData) => {
-  const [searchTextInput, setSearchTextInput] = useState("");
 
   const adCountString = `Sök yrke bland ${props.adCount} annonser`;
   return (
@@ -39,11 +41,11 @@ const Header = (props:HeaderData) => {
             </Row>
             <Row className="header-content-searchbar">
               <p>Sök på ett eller flera ord</p>
-              <form className="SearchInput">
+              <form className="SearchInput" onSubmit={(e) => props.newSearch(e)}>
                 <label>
-                  {searchTextInput.length > 0 ? (
+                  {props.searchBarText.length > 0 ? (
                     <span
-                      onClick={(e) => setSearchTextInput("")}
+                      onClick={(e) => props.searchBarResult("")}
                       className="header-content-reseticon"
                       title="Radera text"
                     >
@@ -59,11 +61,11 @@ const Header = (props:HeaderData) => {
                     name="searchInput"
                     autoComplete="off"
                     placeholder={props.adCount === 0 ? undefined : adCountString}
-                    onChange={(e) => setSearchTextInput(e.target.value)}
-                    value={searchTextInput}
+                    onChange={(e) => props.searchBarResult(e.target.value)}
+                    value={props.searchBarText}
                   />
                   <span className="header-content-filtericon" title="Filtrera sökresultat" ><Sliders/></span>
-                  <div className="header-content-button" title="Påbörja sökning">Sök</div>
+                  <div className="header-content-button" onClick={(e) => props.newSearch(e)} title="Påbörja sökning">Sök</div>
                 </label>
               </form>
             </Row>
