@@ -1,5 +1,4 @@
 import "./css/Header.css";
-import { useState } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import { Search, XCircleFill, Sliders } from "react-bootstrap-icons";
 
@@ -8,6 +7,7 @@ interface HeaderData {
     searchBarText: string;
     searchBarResult: any;
     newSearch: any;
+    isLoading: boolean
 }
 
 const Header = (props:HeaderData) => {

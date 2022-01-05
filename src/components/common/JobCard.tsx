@@ -2,7 +2,6 @@ import "./css/JobCard.css";
 import { Accordion } from "react-bootstrap";
 import { Star, StarFill } from "react-bootstrap-icons";
 import { useState } from "react";
-import { Tooltip } from "@mui/material";
 
 const JobCard = (props: any) => {
   const publicationString = props.job.publication_date.replace(/T|Z/g, " ");
