@@ -6,7 +6,6 @@ import { Row, Col, Container } from "react-bootstrap";
 
 const Home = () => {
   const [latestAdApiData, setLatestAdApiData] = useState([]);
-  const [searchApiData, setSearchApiData] = useState([]);
   const [searchBarText, setSearchBarText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSearching, setIsSearching] = useState(false);

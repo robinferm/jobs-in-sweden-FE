@@ -7,7 +7,6 @@ interface HeaderData {
     searchBarText: string;
     searchBarResult: any;
     newSearch: any;
-    isLoading: boolean
 }
 
 const Header = (props:HeaderData) => {
