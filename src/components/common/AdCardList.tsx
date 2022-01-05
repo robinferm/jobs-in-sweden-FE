@@ -9,7 +9,9 @@ interface AdCardData {
   isWatchingAdSection: boolean;
   recieveDataFromAdCardListChild: any;
   changeIsWatchingAdSection: any;
+  changeIsSearching: any;
   apiData: any;
+  isSearching: boolean;
 }
 
 const AdCardList = (props: AdCardData) => {
@@ -44,6 +46,23 @@ const AdCardList = (props: AdCardData) => {
               >
                 Statistik
               </span>
+              {props.isSearching ? (
+                <span
+                  style={{
+                    color: "gray",
+                    cursor: "pointer",
+                    fontSize: "12px",
+                    display: "inline-block",
+                    height: "2rem",
+                    float: "right",
+                    paddingTop: "0.25rem",
+                    paddingRight: "1.75rem",
+                  }}
+                  onClick={() => props.changeIsSearching()}
+                >
+                  Rensa sökning
+                </span>
+              ) : null}
               <span
                 style={{
                   width: "96%",
@@ -81,6 +100,23 @@ const AdCardList = (props: AdCardData) => {
               >
                 Statistik
               </span>
+              {props.isSearching ? (
+                <span
+                  style={{
+                    color: "gray",
+                    cursor: "pointer",
+                    fontSize: "12px",
+                    display: "inline-block",
+                    height: "2rem",
+                    float: "right",
+                    paddingTop: "0.25rem",
+                    paddingRight: "1.75rem",
+                  }}
+                  onClick={() => props.changeIsSearching()}
+                >
+                  Rensa sökning
+                </span>
+              ) : null}
               <span
                 style={{
                   width: "96%",

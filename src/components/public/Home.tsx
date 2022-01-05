@@ -29,6 +29,12 @@ const Home = () => {
     setSearchBarText(value);
   };
 
+  // Callback function to change isSearching state
+  const changeIsSearching = () => {
+    setIsSearching((prevSaved) => !prevSaved);
+    setSearchBarText("");
+  }
+
   // Callback function to know when user request a new search for ads in Header.tsx
   const newSearch = async (event: any) => {
     event.preventDefault();
@@ -47,14 +53,17 @@ const Home = () => {
       .catch((err) => console.error(err));
   };
 
-  useEffect(() => fetchAdCount(),[])
+  useEffect(() => fetchAdCount(), []);
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       if (isSearching) {
         const API =
-          "http://82.102.1.109/api/joblistings/search/" + searchBarText + "/" + currentPage;
+          "http://82.102.1.109/api/joblistings/search/" +
+          searchBarText +
+          "/" +
+          currentPage;
         await fetch(API)
           .then((response) => response.json())
           .then((data) => setLatestAdApiData(data.data))
@@ -102,6 +111,8 @@ const Home = () => {
               recieveDataFromAdCardListChild={recieveDataFromAdCardListChild}
               isWatchingAdSection={isWatchingAdSection}
               changeIsWatchingAdSection={changeIsWatchingAdSection}
+              isSearching={isSearching}
+              changeIsSearching={changeIsSearching}
             />
           </Col>
         </Row>
