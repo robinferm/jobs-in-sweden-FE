@@ -1,5 +1,5 @@
 import "./css/Home.css";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Header from "../common/Header";
 import AdCardList from "../common/AdCardList";
 import { Row, Col, Container } from "react-bootstrap";
@@ -29,6 +29,7 @@ const Home = () => {
   }
 
   // Callback function to know when user request a new search for ads in Header.tsx
+  // Will fetch first page based of search word
   const newSearch = async (event: any) => {
     event.preventDefault();
     if(searchBarText === "") return;
@@ -77,8 +78,17 @@ const Home = () => {
       <Container fluid className="content">
         <Row>
           <Col sm={4} className="SavedAdsContainer">
-            <Container>
-              <p>Sparade annonser</p>
+            <Container style={{textAlign:"left"}}>
+            <span
+                style={{
+                  marginLeft: "0.5rem",
+                  color: "gray",
+                  cursor: "default",
+                  fontSize: "12px",
+                }}
+              >
+                Sparade annonser
+              </span>
             </Container>
           </Col>
           <Col sm={8} className="LatestAdsContainer">

@@ -29,13 +29,9 @@ const JobCard = (props: any) => {
         >
           {" "}
           {!isSaved ? (
-            <Tooltip title="Spara annons">
             <Star style={{ fontSize: "24px", margin: "10px" }} />
-            </Tooltip>
           ) : (
-            <Tooltip title="Ta bort sparad annons">
             <StarFill style={{ fontSize: "24px", margin: "10px" }} />
-            </Tooltip>
           )}
         </span>
       </Accordion.Header>
