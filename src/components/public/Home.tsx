@@ -113,6 +113,7 @@ const Home = () => {
               changeIsWatchingAdSection={changeIsWatchingAdSection}
               isSearching={isSearching}
               changeIsSearching={changeIsSearching}
+              isLoading={isLoading}
             />
           </Col>
         </Row>

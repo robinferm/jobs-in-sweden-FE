@@ -12,6 +12,7 @@ interface AdCardData {
   changeIsSearching: any;
   apiData: any;
   isSearching: boolean;
+  isLoading: boolean;
 }
 
 const AdCardList = (props: AdCardData) => {
@@ -46,7 +47,7 @@ const AdCardList = (props: AdCardData) => {
               >
                 Statistik
               </span>
-              {props.isSearching ? (
+              {props.isSearching && !props.isLoading ? (
                 <span
                   style={{
                     color: "gray",
@@ -100,7 +101,7 @@ const AdCardList = (props: AdCardData) => {
               >
                 Statistik
               </span>
-              {props.isSearching ? (
+              {props.isSearching && !props.isLoading ? (
                 <span
                   style={{
                     color: "gray",
