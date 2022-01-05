@@ -9,8 +9,10 @@ const Home = () => {
   const [searchApiData, setSearchApiData] = useState([]);
   const [searchBarText, setSearchBarText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
   const [isWatchingAdSection, SetIsWatchingAdSection] = useState(true);
   const [totalAdCount, setTotalAdCount] = useState(0);
+  const [searchCount, setSearchCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Callback function to receive what page number user is at on AdCardList.tsx
@@ -26,21 +28,16 @@ const Home = () => {
   // Callback function to receive search bar text onChange from Header.tsx
   const searchBarResult = (value: string) => {
     setSearchBarText(value);
-  }
+  };
 
   // Callback function to know when user request a new search for ads in Header.tsx
-  // Will fetch first page based of search word
   const newSearch = async (event: any) => {
     event.preventDefault();
-    if(searchBarText === "") return;
-    setIsLoading(true);
-    const API = "http://82.102.1.109/api/joblistings/search/" + searchBarText + "/1";
-    await fetch(API)
-      .then((response) => response.json())
-      .then((data) => setSearchApiData(data.data))
-      .catch((err) => console.error(err));
-    setIsLoading(false);
-  }
+    if (searchBarText === "") return;
+    if (currentPage !== 1) setCurrentPage(1);
+    setIsSearching(true);
+    setSearchCount(searchCount + 1);
+  };
 
   // Fetch total ad count in database
   const fetchAdCount = () => {
@@ -51,35 +48,43 @@ const Home = () => {
       .catch((err) => console.error(err));
   };
 
+  useEffect(() => fetchAdCount(),[])
+
   useEffect(() => {
-    const fetchLatestAds = async () => {
+    const fetchData = async () => {
       setIsLoading(true);
-      const API =
-        "http://82.102.1.109/api/joblistings/all/" + currentPage;
-      await fetch(API)
-        .then((response) => response.json())
-        .then((data) => setLatestAdApiData(data.data))
-        .catch((err) => console.error(err));
+      if (isSearching) {
+        const API =
+          "http://82.102.1.109/api/joblistings/search/" + searchBarText + "/" + currentPage;
+        await fetch(API)
+          .then((response) => response.json())
+          .then((data) => setLatestAdApiData(data.data))
+          .catch((err) => console.error(err));
+      } else {
+        const API = "http://82.102.1.109/api/joblistings/all/" + currentPage;
+        await fetch(API)
+          .then((response) => response.json())
+          .then((data) => setLatestAdApiData(data.data))
+          .catch((err) => console.error(err));
+      }
       setIsLoading(false);
     };
-
-    fetchAdCount();
-    fetchLatestAds();
-  }, [currentPage]);
+    fetchData();
+  }, [currentPage, isSearching, searchCount]);
 
   return (
     <div className="wrapper">
-      <Header 
-      adCount={totalAdCount} 
-      searchBarResult={searchBarResult}
-      searchBarText={searchBarText}
-      newSearch={newSearch}
+      <Header
+        adCount={totalAdCount}
+        searchBarResult={searchBarResult}
+        searchBarText={searchBarText}
+        newSearch={newSearch}
       />
       <Container fluid className="content">
         <Row>
           <Col sm={4} className="SavedAdsContainer">
-            <Container style={{textAlign:"left"}}>
-            <span
+            <Container style={{ textAlign: "left" }}>
+              <span
                 style={{
                   marginLeft: "0.5rem",
                   color: "gray",
