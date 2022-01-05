@@ -40,7 +40,6 @@ const Header = (props:HeaderData) => {
               </p>
             </Row>
             <Row className="header-content-searchbar">
-              <p>Sök på ett eller flera ord</p>
               <form className="SearchInput" onSubmit={(e) => props.newSearch(e)}>
                 <label>
                   {props.searchBarText.length > 0 ? (
