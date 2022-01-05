@@ -9,7 +9,10 @@ interface AdCardData {
   isWatchingAdSection: boolean;
   recieveDataFromAdCardListChild: any;
   changeIsWatchingAdSection: any;
+  changeIsSearching: any;
   apiData: any;
+  isSearching: boolean;
+  isLoading: boolean;
 }
 
 const AdCardList = (props: AdCardData) => {
@@ -44,6 +47,23 @@ const AdCardList = (props: AdCardData) => {
               >
                 Statistik
               </span>
+              {props.isSearching && !props.isLoading ? (
+                <span
+                  style={{
+                    color: "gray",
+                    cursor: "pointer",
+                    fontSize: "12px",
+                    display: "inline-block",
+                    height: "2rem",
+                    float: "right",
+                    paddingTop: "0.25rem",
+                    paddingRight: "1.75rem",
+                  }}
+                  onClick={() => props.changeIsSearching()}
+                >
+                  Rensa sökning
+                </span>
+              ) : null}
               <span
                 style={{
                   width: "96%",
@@ -81,6 +101,23 @@ const AdCardList = (props: AdCardData) => {
               >
                 Statistik
               </span>
+              {props.isSearching && !props.isLoading ? (
+                <span
+                  style={{
+                    color: "gray",
+                    cursor: "pointer",
+                    fontSize: "12px",
+                    display: "inline-block",
+                    height: "2rem",
+                    float: "right",
+                    paddingTop: "0.25rem",
+                    paddingRight: "1.75rem",
+                  }}
+                  onClick={() => props.changeIsSearching()}
+                >
+                  Rensa sökning
+                </span>
+              ) : null}
               <span
                 style={{
                   width: "96%",
@@ -108,7 +145,7 @@ const AdCardList = (props: AdCardData) => {
                       variant="secondary"
                       size="sm"
                       onClick={(e) =>
-                        props.pageNumber !== 1
+                        props.pageNumber !== 1 && !props.isLoading
                           ? props.recieveDataFromAdCardListChild(
                               props.pageNumber - 1
                             )
@@ -117,12 +154,17 @@ const AdCardList = (props: AdCardData) => {
                     >
                       Föregående
                     </Button>{" "}
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      onClick={(e) => props.recieveDataFromAdCardListChild(1)}
-                    >
-                      1
+                    {props.pageNumber !== 1 ? (
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={(e) => props.recieveDataFromAdCardListChild(1)}
+                      >
+                        1
+                      </Button>
+                    ) : null}{" "}
+                    <Button variant="primary" size="sm">
+                      {props.pageNumber}
                     </Button>{" "}
                     <Button variant="secondary" size="sm">
                       {props.pageNumber + 1}
@@ -140,9 +182,11 @@ const AdCardList = (props: AdCardData) => {
                       variant="secondary"
                       size="sm"
                       onClick={(e) =>
-                        props.recieveDataFromAdCardListChild(
-                          props.pageNumber + 1
-                        )
+                        !props.isLoading
+                          ? props.recieveDataFromAdCardListChild(
+                              props.pageNumber + 1
+                            )
+                          : null
                       }
                     >
                       Nästa
