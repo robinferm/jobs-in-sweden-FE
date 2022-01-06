@@ -26,7 +26,7 @@ const Logger = () => {
       <Table striped bordered hover variant="light" size="sm" responsive="sm">
         <thead>
           <tr>
-            <th style={{ width: "11rem" }}>Date</th>
+            <th style={{ width: "8rem" }}>Date</th>
             <th>Search word</th>
           </tr>
         </thead>
@@ -36,7 +36,10 @@ const Logger = () => {
             .reverse()
             .map((log: any) => (
               <tr>
-                <th>{log.timeStamp.replace(/T|Z/g, " ")}</th>
+                <th>{log.timeStamp
+                .replace(/T|Z/g, " ")
+                .substr(0, log.timeStamp.lastIndexOf(":"))
+                }</th>
                 <th>{filter.clean(log.searchstring)}</th>
               </tr>
             ))}
