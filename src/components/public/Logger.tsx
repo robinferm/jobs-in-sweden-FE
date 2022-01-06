@@ -16,10 +16,8 @@ const Logger = () => {
     fetchData();
   }, []);
   return (
-    <>
     <Container style={{
-      fontSize: "12px",
-      width: "60%"
+      fontSize: "12px"
     }}>
     <Table striped bordered hover variant="light" size="sm" responsive="sm"> 
     <thead>
@@ -38,7 +36,6 @@ const Logger = () => {
   </tbody>
     </Table>
     </Container>
-    </>
   );
 };
 export default Logger;
