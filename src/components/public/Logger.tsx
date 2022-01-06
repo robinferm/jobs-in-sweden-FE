@@ -35,7 +35,7 @@ const Logger = () => {
             .slice()
             .reverse()
             .map((log: any) => (
-              <tr>
+              <tr key={log.id}>
                 <th>{log.timeStamp
                 .replace(/T|Z/g, " ")
                 .substr(0, log.timeStamp.lastIndexOf(":"))
