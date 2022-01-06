@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import Table from 'react-bootstrap/Table'
+import { Container } from "react-bootstrap";
+import Table from "react-bootstrap/Table";
+import Filter from "bad-words";
 
 const Logger = () => {
   const [logApiData, SetLogApiData] = useState([]);
+  const filter = new Filter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,25 +18,30 @@ const Logger = () => {
     fetchData();
   }, []);
   return (
-    <Container style={{
-      fontSize: "12px"
-    }}>
-    <Table striped bordered hover variant="light" size="sm" responsive="sm"> 
-    <thead>
-    <tr>
-      <th style={{width:"11rem"}}>Date</th>
-      <th>Search word</th>
-    </tr>
-  </thead>
-  <tbody>
-  {logApiData.slice().reverse().map((log: any) => (
-      <tr>
-        <th>{log.timeStamp.replace(/T|Z/g, " ")}</th>
-        <th>{log.searchstring}</th>
-      </tr>
-      ))}
-  </tbody>
-    </Table>
+    <Container
+      style={{
+        fontSize: "12px",
+      }}
+    >
+      <Table striped bordered hover variant="light" size="sm" responsive="sm">
+        <thead>
+          <tr>
+            <th style={{ width: "11rem" }}>Date</th>
+            <th>Search word</th>
+          </tr>
+        </thead>
+        <tbody>
+          {logApiData
+            .slice()
+            .reverse()
+            .map((log: any) => (
+              <tr>
+                <th>{log.timeStamp.replace(/T|Z/g, " ")}</th>
+                <th>{filter.clean(log.searchstring)}</th>
+              </tr>
+            ))}
+        </tbody>
+      </Table>
     </Container>
   );
 };
