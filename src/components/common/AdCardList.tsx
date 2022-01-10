@@ -175,9 +175,10 @@ const AdCardList = (props: AdCardData) => {
                     <Button variant="secondary" size="sm">
                       {props.pageNumber + 3}
                     </Button>{" "}
-                    <Button variant="secondary" size="sm">
+                    {props.pageNumber === 1 ?                     <Button variant="secondary" size="sm">
                       {props.pageNumber + 4}
-                    </Button>{" "}
+                    </Button> : null }
+                    {" "}
                     <Button
                       variant="secondary"
                       size="sm"
