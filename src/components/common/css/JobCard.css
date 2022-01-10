@@ -9,8 +9,15 @@
     margin-left: 0.75rem;
 }
 
-.Card:hover {
-    background-color: rgba(0, 0, 0, 0.02);
+.CardLogo {
+    text-align: center;
+    max-height: 10rem;
+    max-width: 10rem;
+}
+
+.CardLogo img {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .CardTitle {
@@ -25,10 +32,6 @@
     font-size: 20px;
     font-weight: 600;
     text-decoration: none;
-}
-
-.CardTitle A:hover {
-    color: rgb(54, 174, 243);
 }
 
 .CardDescription {
