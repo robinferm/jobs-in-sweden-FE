@@ -9,7 +9,10 @@ interface AdCardData {
   isWatchingAdSection: boolean;
   recieveDataFromAdCardListChild: any;
   changeIsWatchingAdSection: any;
+  changeIsSearching: any;
   apiData: any;
+  isSearching: boolean;
+  isLoading: boolean;
 }
 
 const AdCardList = (props: AdCardData) => {
@@ -17,44 +20,122 @@ const AdCardList = (props: AdCardData) => {
     <div>
       <Container className="MainContainer">
         <Row>
-          <p style={{ color: "gray" }}>
-            {props.isWatchingAdSection ? (
-              <div>
+          {props.isWatchingAdSection ? (
+            <div>
+              <span
+                style={{
+                  color: "gray",
+                  cursor: "pointer",
+                  fontSize: "12px",
+                  borderBottom: "2px solid rgba(54, 174, 243)",
+                  display: "inline-block",
+                  height: "2rem",
+                }}
+              >
+                Annonser
+              </span>
+              <span
+                style={{
+                  color: "gray",
+                  cursor: "pointer",
+                  fontSize: "12px",
+                  display: "inline-block",
+                  height: "2rem",
+                  marginLeft: "0.5rem",
+                }}
+                onClick={() => props.changeIsWatchingAdSection(false)}
+              >
+                Statistik
+              </span>
+              {props.isSearching && !props.isLoading ? (
                 <span
-                  style={{ cursor: "pointer", fontWeight: "500" }}
+                  style={{
+                    color: "gray",
+                    cursor: "pointer",
+                    fontSize: "12px",
+                    display: "inline-block",
+                    height: "2rem",
+                    float: "right",
+                    paddingTop: "0.25rem",
+                    paddingRight: "1.75rem",
+                  }}
+                  onClick={() => props.changeIsSearching()}
                 >
-                  Annonser{" "}
+                  Rensa sökning
                 </span>
+              ) : null}
+              <span
+                style={{
+                  width: "96%",
+                  color: "gray",
+                  borderTop: "1px solid #dfdfdf",
+                  display: "inline-block",
+                  height: "2rem",
+                }}
+              ></span>
+            </div>
+          ) : (
+            <div>
+              <span
+                style={{
+                  color: "gray",
+                  cursor: "pointer",
+                  fontSize: "12px",
+                  display: "inline-block",
+                  height: "1.5rem",
+                }}
+                onClick={() => props.changeIsWatchingAdSection(true)}
+              >
+                Annonser{" "}
+              </span>
+              <span
+                style={{
+                  color: "gray",
+                  cursor: "pointer",
+                  fontSize: "12px",
+                  borderBottom: "2px solid rgb(54, 174, 243)",
+                  display: "inline-block",
+                  height: "2rem",
+                  marginLeft: "0.5rem",
+                }}
+              >
+                Statistik
+              </span>
+              {props.isSearching && !props.isLoading ? (
                 <span
-                  style={{ cursor: "pointer" }}
-                  onClick={() => props.changeIsWatchingAdSection(false)}
+                  style={{
+                    color: "gray",
+                    cursor: "pointer",
+                    fontSize: "12px",
+                    display: "inline-block",
+                    height: "2rem",
+                    float: "right",
+                    paddingTop: "0.25rem",
+                    paddingRight: "1.75rem",
+                  }}
+                  onClick={() => props.changeIsSearching()}
                 >
-                  Statistik
+                  Rensa sökning
                 </span>
-              </div>
-            ) : (
-              <div>
-                <span
-                  style={{ cursor: "pointer"}}
-                  onClick={() => props.changeIsWatchingAdSection(true)}
-                >
-                  Annonser{" "}
-                </span>
-                <span
-                  style={{ cursor: "pointer", fontWeight: "500" }}
-                >
-                  Statistik
-                </span>
-              </div>
-            )}
-          </p>
+              ) : null}
+              <span
+                style={{
+                  width: "96%",
+                  color: "gray",
+                  borderTop: "1px solid #dfdfdf",
+                  display: "inline-block",
+                  height: "1.5rem",
+                }}
+              ></span>
+            </div>
+          )}
           <Row>
             {props.isWatchingAdSection ? (
               <div>
                 <Accordion flush>
                   {props.apiData === null
                     ? null
-                    : props.apiData.map((job:any) => (
+                    : props.apiData.map((job: any) => (
                         <JobCard key={job.id} job={job} />
                       ))}
                 </Accordion>
@@ -64,7 +145,7 @@ const AdCardList = (props: AdCardData) => {
                       variant="secondary"
                       size="sm"
                       onClick={(e) =>
-                        props.pageNumber !== 1
+                        props.pageNumber !== 1 && !props.isLoading
                           ? props.recieveDataFromAdCardListChild(
                               props.pageNumber - 1
                             )
@@ -73,12 +154,17 @@ const AdCardList = (props: AdCardData) => {
                     >
                       Föregående
                     </Button>{" "}
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      onClick={(e) => props.recieveDataFromAdCardListChild(1)}
-                    >
-                      1
+                    {props.pageNumber !== 1 ? (
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={(e) => props.recieveDataFromAdCardListChild(1)}
+                      >
+                        1
+                      </Button>
+                    ) : null}{" "}
+                    <Button variant="primary" size="sm">
+                      {props.pageNumber}
                     </Button>{" "}
                     <Button variant="secondary" size="sm">
                       {props.pageNumber + 1}
@@ -89,16 +175,19 @@ const AdCardList = (props: AdCardData) => {
                     <Button variant="secondary" size="sm">
                       {props.pageNumber + 3}
                     </Button>{" "}
-                    <Button variant="secondary" size="sm">
+                    {props.pageNumber === 1 ?                     <Button variant="secondary" size="sm">
                       {props.pageNumber + 4}
-                    </Button>{" "}
+                    </Button> : null }
+                    {" "}
                     <Button
                       variant="secondary"
                       size="sm"
                       onClick={(e) =>
-                        props.recieveDataFromAdCardListChild(
-                          props.pageNumber + 1
-                        )
+                        !props.isLoading
+                          ? props.recieveDataFromAdCardListChild(
+                              props.pageNumber + 1
+                            )
+                          : null
                       }
                     >
                       Nästa
