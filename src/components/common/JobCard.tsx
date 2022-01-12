@@ -37,6 +37,7 @@ const JobCard = (props: any) => {
     e.stopPropagation();
     toggleLocalStorage(id)
     setSaved((prevSaved) => !prevSaved);
+    props.savedAdCounter();
   };
   return (
     <Accordion.Item eventKey={props.job.id}>

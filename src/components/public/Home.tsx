@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import Header from "../common/Header";
 import AdCardList from "../common/AdCardList";
 import { Row, Col, Container } from "react-bootstrap";
+import JobCard from "../common/JobCard";
+import SavedAds from "../common/SavedAds";
 
 const Home = () => {
   const [latestAdApiData, setLatestAdApiData] = useState([]);
@@ -14,6 +16,7 @@ const Home = () => {
   const [searchCount, setSearchCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [prevPageNumber, setPrevPageNumber] = useState(1);
+  const [adCounter, setAdCounter] = useState(0);
 
   // Callback function to receive what page number user is at on AdCardList.tsx
   const recieveDataFromAdCardListChild = (page: number) => {
@@ -47,6 +50,11 @@ const Home = () => {
     setIsSearching(true);
     setSearchCount(searchCount + 1);
   };
+
+  const savedAdCounter = () => {
+    setAdCounter(adCounter + 1);
+    console.log(adCounter);
+  }
 
   // Fetch total ad count in database
   const fetchAdCount = () => {
@@ -105,6 +113,7 @@ const Home = () => {
                 }}
               >
                 Sparade annonser
+                <SavedAds savedAdCounter={savedAdCounter}/>
               </span>
             </Container>
           </Col>
@@ -118,6 +127,7 @@ const Home = () => {
               isSearching={isSearching}
               changeIsSearching={changeIsSearching}
               isLoading={isLoading}
+              savedAdCounter={savedAdCounter}
             />
           </Col>
         </Row>
