@@ -1,14 +1,19 @@
 import "./css/JobCard.css";
 import { Col, Row, Accordion } from "react-bootstrap";
 import { Star, StarFill } from "react-bootstrap-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const JobCard = (props: any) => {
   const publicationString = props.job.publication_date.replace(/T|Z/g, " ");
   const deadlineString = props.job.deadline.replace(/T|Z/g, " ");
   const [isSaved, setSaved] = useState(false);
 
-
+  useEffect(() => {
+    var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+    if(existingEntries !== null){
+      if(existingEntries.includes(props.job.id)) setSaved(true);
+    }
+  }, []);
 
   function toggleLocalStorage(entry: string) {
     // Parse any JSON previously stored in allEntries
