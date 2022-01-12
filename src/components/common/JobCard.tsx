@@ -8,8 +8,29 @@ const JobCard = (props: any) => {
   const deadlineString = props.job.deadline.replace(/T|Z/g, " ");
   const [isSaved, setSaved] = useState(false);
 
-  const toggleSaved = (e: any) => {
+
+
+  function toggleLocalStorage(entry: string) {
+    // Parse any JSON previously stored in allEntries
+    var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+    if(existingEntries == null) existingEntries = [];
+
+    const index = existingEntries.indexOf(entry)
+    if(existingEntries.includes(entry)){
+      existingEntries.splice(index, 1)
+    }
+    else{
+      localStorage.setItem("entry", JSON.stringify(entry));
+      // Save allEntries back to local storage
+      existingEntries.push(entry);
+    }
+
+    localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+  };
+
+  const toggleSaved = (e: any, id: string) => {
     e.stopPropagation();
+    toggleLocalStorage(id)
     setSaved((prevSaved) => !prevSaved);
   };
   return (
@@ -49,7 +70,7 @@ const JobCard = (props: any) => {
         <span
           className="SaveIcon"
           style={{ float: "right" }}
-          onClick={(e) => toggleSaved(e)}
+          onClick={(e) => toggleSaved(e, props.job.id)}
         >
           {" "}
           {!isSaved ? (
