@@ -118,6 +118,7 @@ const Home = () => {
               isSearching={isSearching}
               changeIsSearching={changeIsSearching}
               isLoading={isLoading}
+              searchBarText={searchBarText}
             />
           </Col>
         </Row>
