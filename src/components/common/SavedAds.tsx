@@ -18,7 +18,7 @@ const SavedAds = (props: any) => {
 
   const getAdsData = () => {
     if (queryString !== undefined) {
-      const API = "http://localhost/api/joblistings/?ids=" + queryString;
+      const API = "http://82.102.1.109/api/joblistings/?ids=" + queryString;
       fetch(API)
         .then((response) => response.json())
         .then((data) => setSavedAdsData(data))
