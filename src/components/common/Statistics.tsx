@@ -7,17 +7,27 @@ interface Props {
 }
 
 const Statistics = (props: Props) => {
-  const [employerData, setEmployerData] = useState([]);
+  const [employerStatisticData, setEmployerStatisticData] = useState([]);
+  const [categoryStatisticData, setCategoryStatisticData] = useState([]);
 
   useEffect(() => {
-    const fetchEmployerData = async () => {
-      const API = "http://82.102.1.109/api/joblistings/employercount/";
+    const fetchEmployerStatistics = async () => {
+      const API = "http://82.102.1.109/api/joblistings/employercount";
       await fetch(API)
         .then((response) => response.json())
-        .then((data) => setEmployerData(data))
+        .then((data) => setEmployerStatisticData(data))
         .catch((err) => console.error(err));
     };
-    fetchEmployerData();
+    const fetchCategoryStatistics = async () => {
+      const API = "http://82.102.1.109/api/joblistings/categorycount";
+      await fetch(API)
+        .then((response) => response.json())
+        .then((data) => setCategoryStatisticData(data))
+        .catch((err) => console.error(err));
+    };
+
+    fetchEmployerStatistics();
+    fetchCategoryStatistics();
   }, []);
 
   return (
@@ -37,7 +47,7 @@ const Statistics = (props: Props) => {
               Populära arbetsgivare
             </p>
             <Col sm={4}>
-              {employerData.slice(0, 5).map((employeer: any) => (
+              {employerStatisticData.slice(0, 5).map((employeer: any) => (
                 <Row key={employeer._id} onClick={(e) => console.log("hello")}>
                   <p style={{ fontSize: "12px", textAlign: "left" }}>
                   {employeer._id} <span style={{fontWeight:"600"}}>({employeer.count})</span>
@@ -46,7 +56,7 @@ const Statistics = (props: Props) => {
               ))}
             </Col>
             <Col sm={4}>
-              {employerData.slice(5, 10).map((employeer: any) => (
+              {employerStatisticData.slice(5, 10).map((employeer: any) => (
                 <Row key={employeer._id}>
                   <p style={{ fontSize: "12px", textAlign: "left" }}>
                     {employeer._id} <span style={{fontWeight:"600"}}>({employeer.count})</span>
@@ -55,10 +65,49 @@ const Statistics = (props: Props) => {
               ))}
             </Col>
             <Col sm={4}>
-              {employerData.slice(10, 15).map((employeer: any) => (
+              {employerStatisticData.slice(10, 15).map((employeer: any) => (
                 <Row key={employeer._id}>
                   <p style={{ fontSize: "12px", textAlign: "left" }}>
                   {employeer._id} <span style={{fontWeight:"600"}}>({employeer.count})</span>
+                  </p>
+                </Row>
+              ))}
+            </Col>
+          </Row>
+          <Row style={{ textAlign: "center", paddingTop: "2rem" }}>
+            <p
+              style={{
+                color: "darkslategray",
+                fontSize: "16px",
+                fontWeight: "600",
+                textAlign: "left",
+              }}
+            >
+              Populära Kategorier
+            </p>
+            <Col sm={4}>
+              {categoryStatisticData.slice(0, 5).map((category: any) => (
+                <Row key={category._id} onClick={(e) => console.log("hello")}>
+                  <p style={{ fontSize: "12px", textAlign: "left" }}>
+                  {category._id} <span style={{fontWeight:"600"}}>({category.count})</span>
+                  </p>
+                </Row>
+              ))}
+            </Col>
+            <Col sm={4}>
+              {categoryStatisticData.slice(5, 10).map((category: any) => (
+                <Row key={category._id}>
+                  <p style={{ fontSize: "12px", textAlign: "left" }}>
+                    {category._id} <span style={{fontWeight:"600"}}>({category.count})</span>
+                  </p>
+                </Row>
+              ))}
+            </Col>
+            <Col sm={4}>
+              {categoryStatisticData.slice(10, 15).map((category: any) => (
+                <Row key={category._id}>
+                  <p style={{ fontSize: "12px", textAlign: "left" }}>
+                  {category._id} <span style={{fontWeight:"600"}}>({category.count})</span>
                   </p>
                 </Row>
               ))}
