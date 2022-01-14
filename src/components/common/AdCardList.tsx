@@ -2,7 +2,7 @@ import "./css/AdCardList.css";
 import React from "react";
 import { Row, Col, Container, Button, Accordion } from "react-bootstrap";
 import JobCard from "./JobCard";
-import GeneralStatistics from "./GeneralStatistics";
+import Statistics from "./Statistics";
 
 interface AdCardData {
   pageNumber: number;
@@ -13,6 +13,7 @@ interface AdCardData {
   apiData: any;
   isSearching: boolean;
   isLoading: boolean;
+  searchBarText: string;
 }
 
 const AdCardList = (props: AdCardData) => {
@@ -196,7 +197,7 @@ const AdCardList = (props: AdCardData) => {
                 </Row>
               </div>
             ) : (
-              <GeneralStatistics />
+              <Statistics searchBarText={props.searchBarText}/>
             )}
           </Row>
         </Row>
