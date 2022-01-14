@@ -12,14 +12,14 @@ const Statistics = (props: Props) => {
 
   useEffect(() => {
     const fetchEmployerStatistics = async () => {
-      const API = "http://82.102.1.109/api/joblistings/employercount";
+      const API = "http://localhost/api/joblistings/employercount";
       await fetch(API)
         .then((response) => response.json())
         .then((data) => setEmployerStatisticData(data))
         .catch((err) => console.error(err));
     };
     const fetchCategoryStatistics = async () => {
-      const API = "http://82.102.1.109/api/joblistings/categorycount";
+      const API = "http://localhost/api/joblistings/categorycount";
       await fetch(API)
         .then((response) => response.json())
         .then((data) => setCategoryStatisticData(data))

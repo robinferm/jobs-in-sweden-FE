@@ -9,28 +9,45 @@ const JobCard = (props: any) => {
   const [isSaved, setSaved] = useState(false);
 
   useEffect(() => {
-    var existingEntries = JSON.parse(localStorage.getItem("allEntries") || '{}');
+    var existingEntries = localStorage.getItem("allEntries");
     if(existingEntries !== null){
       if(existingEntries.includes(props.job.id)) setSaved(true);
     }
   }, []);
 
-  function toggleLocalStorage(entry: string) {
-    // Parse any JSON previously stored in allEntries
-    var existingEntries = JSON.parse(localStorage.getItem("allEntries") || '{}');
-    if(existingEntries == null) existingEntries = [];
 
-    const index = existingEntries.indexOf(entry)
-    if(existingEntries.includes(entry)){
-      existingEntries.splice(index, 1)
-    }
-    else{
+  function toggleLocalStorage(entry: string) {
+    // Localstorage is empty
+    if(localStorage.getItem("allEntries") == null){
+      var arr = [];
       localStorage.setItem("entry", JSON.stringify(entry));
       // Save allEntries back to local storage
-      existingEntries.push(entry);
+      arr.push(entry);
+      localStorage.setItem("allEntries", JSON.stringify(arr));
     }
-
-    localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+    else{
+      var existingEntries = localStorage.getItem("allEntries");
+      // If entry exists in localstorage
+      // @ts-ignore
+      var test = JSON.parse(existingEntries)
+      if(test.includes(entry)){      // Compiling error, cant do .includes when it might be null
+        // @ts-ignore
+        const index = JSON.parse(existingEntries).indexOf(entry)
+        console.log(index)
+        console.log(existingEntries)
+        // @ts-ignore
+        var test = JSON.parse(existingEntries).splice(index, 1)
+        console.log(test)
+        localStorage.setItem("allEntries", JSON.stringify(test));
+      }
+      // If entry does not exists and should be added
+      else{
+        // @ts-ignore
+        var existingArr = JSON.parse(existingEntries);
+        existingArr.push(entry);
+        localStorage.setItem("allEntries", JSON.stringify(existingArr));
+      }
+    }
   };
 
   const toggleSaved = (e: any, id: string) => {

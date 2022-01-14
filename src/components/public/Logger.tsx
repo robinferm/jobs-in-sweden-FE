@@ -9,7 +9,7 @@ const Logger = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const API = "http://82.102.1.109/api/joblistings/searchhistory";
+      const API = "http://localhost/api/joblistings/searchhistory";
       await fetch(API)
         .then((response) => response.json())
         .then((data) => SetLogApiData(data))

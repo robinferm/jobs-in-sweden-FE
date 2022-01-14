@@ -58,7 +58,7 @@ const Home = () => {
 
   // Fetch total ad count in database
   const fetchAdCount = () => {
-    const API = "http://82.102.1.109/api/joblistings/count";
+    const API = "http://localhost/api/joblistings/count";
     fetch(API)
       .then((response) => response.json())
       .then((data) => setTotalAdCount(data))
@@ -72,7 +72,7 @@ const Home = () => {
       setIsLoading(true);
       if (isSearching) {
         const API =
-          "http://82.102.1.109/api/joblistings/search/" +
+          "http://localhost/api/joblistings/search/" +
           searchBarText +
           "/" +
           currentPage;
@@ -81,7 +81,7 @@ const Home = () => {
           .then((data) => setLatestAdApiData(data.data))
           .catch((err) => console.error(err));
       } else {
-        const API = "http://82.102.1.109/api/joblistings/all/" + currentPage;
+        const API = "http://localhost/api/joblistings/all/" + currentPage;
         await fetch(API)
           .then((response) => response.json())
           .then((data) => setLatestAdApiData(data.data))
