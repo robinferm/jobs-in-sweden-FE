@@ -1,16 +1,43 @@
 import "./css/JobCard.css";
 import { Col, Row, Accordion } from "react-bootstrap";
 import { Star, StarFill } from "react-bootstrap-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const JobCard = (props: any) => {
   const publicationString = props.job.publication_date.replace(/T|Z/g, " ");
   const deadlineString = props.job.deadline.replace(/T|Z/g, " ");
   const [isSaved, setSaved] = useState(false);
 
-  const toggleSaved = (e: any) => {
+  useEffect(() => {
+    var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+    if(existingEntries !== null){
+      if(existingEntries.includes(props.job.id)) setSaved(true);
+    }
+  }, []);
+
+  function toggleLocalStorage(entry: string) {
+    // Parse any JSON previously stored in allEntries
+    var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+    if(existingEntries == null) existingEntries = [];
+
+    const index = existingEntries.indexOf(entry)
+    if(existingEntries.includes(entry)){
+      existingEntries.splice(index, 1)
+    }
+    else{
+      localStorage.setItem("entry", JSON.stringify(entry));
+      // Save allEntries back to local storage
+      existingEntries.push(entry);
+    }
+
+    localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+  };
+
+  const toggleSaved = (e: any, id: string) => {
     e.stopPropagation();
+    toggleLocalStorage(id)
     setSaved((prevSaved) => !prevSaved);
+    props.savedAdCounter();
   };
   return (
     <Accordion.Item eventKey={props.job.id}>
@@ -49,7 +76,7 @@ const JobCard = (props: any) => {
         <span
           className="SaveIcon"
           style={{ float: "right" }}
-          onClick={(e) => toggleSaved(e)}
+          onClick={(e) => toggleSaved(e, props.job.id)}
         >
           {" "}
           {!isSaved ? (

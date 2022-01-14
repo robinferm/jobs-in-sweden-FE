@@ -13,6 +13,7 @@ interface AdCardData {
   apiData: any;
   isSearching: boolean;
   isLoading: boolean;
+  savedAdCounter: any;
   searchBarText: string;
 }
 
@@ -137,7 +138,7 @@ const AdCardList = (props: AdCardData) => {
                   {props.apiData === null
                     ? null
                     : props.apiData.map((job: any) => (
-                        <JobCard key={job.id} job={job} />
+                        <JobCard savedAdCounter={props.savedAdCounter} key={job.id} job={job} />
                       ))}
                 </Accordion>
                 <Row style={{ textAlign: "center", paddingTop: "1rem" }}>
