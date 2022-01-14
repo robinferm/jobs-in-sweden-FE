@@ -31,7 +31,7 @@ const SavedAds = (props: any) => {
   useEffect(() => getAdsData(), [queryString]);
   return (
     <div>
-      {queryString === undefined 
+      {savedAdsData === undefined || null
         ? null
         : savedAdsData.map((job: any) => (
             <div key={job.id} onClick={() => console.log(job.headline)}>
