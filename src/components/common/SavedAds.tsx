@@ -13,7 +13,7 @@ const SavedAds = (props: any) => {
             // Create query string
             var ids = existingEntries.map((id: string) => (
                 id + '&ids='
-            )).join('');
+            )).join('').slice(0, - 5);
 
             setQueryString(ids);
         }
@@ -33,6 +33,7 @@ const SavedAds = (props: any) => {
     useEffect(() => getSavedAds(), [props.savedAdCounter]);
 
     useEffect(() => getAdsData(), [queryString])
+
     return(
         <div>{queryString === undefined ? null : savedAdsData.map((job: any) => (
                 <div key={job.id} onClick={() =>console.log(job.headline)}>{job.headline}</div>
