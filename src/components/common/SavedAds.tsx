@@ -10,7 +10,7 @@ const SavedAds = (props: any) => {
     var existingEntries = JSON.parse(localStorage.getItem("allEntries") || '{}');
     if (existingEntries !== null) {
       // Create query string
-      var ids = existingEntries.map((id: string) => id + "&ids=").join("");
+      var ids = existingEntries.map((id: string) => id + "&ids=").join("").slice(0, - 5);
 
       setQueryString(ids);
     }
