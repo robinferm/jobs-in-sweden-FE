@@ -9,6 +9,7 @@ const JobCard = (props: any) => {
   const [isSaved, setSaved] = useState(false);
 
   useEffect(() => {
+    // @ts-ignore
     var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
     if(existingEntries !== null){
       if(existingEntries.includes(props.job.id)) setSaved(true);
@@ -17,6 +18,7 @@ const JobCard = (props: any) => {
 
   function toggleLocalStorage(entry: string) {
     // Parse any JSON previously stored in allEntries
+    // @ts-ignore
     var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
     if(existingEntries == null) existingEntries = [];
 

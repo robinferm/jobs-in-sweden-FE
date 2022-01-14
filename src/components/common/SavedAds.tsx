@@ -7,6 +7,7 @@ const SavedAds = (props: any) => {
 
   const getSavedAds = () => {
     // Get ad ids from local storage
+    // @ts-ignore
     var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
     if (existingEntries !== null) {
       // Create query string
