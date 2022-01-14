@@ -102,7 +102,7 @@ const Home = () => {
       />
       <Container fluid className="content">
         <Row>
-          <Col sm={4} className="SavedAdsContainer">
+          <Col sm={3} className="SavedAdsContainer">
             <Container style={{ textAlign: "left" }}>
               <span
                 style={{
@@ -117,7 +117,7 @@ const Home = () => {
               </span>
             </Container>
           </Col>
-          <Col sm={8} className="LatestAdsContainer">
+          <Col sm={9} className="LatestAdsContainer">
             <AdCardList
               apiData={latestAdApiData}
               pageNumber={currentPage}
@@ -128,6 +128,7 @@ const Home = () => {
               changeIsSearching={changeIsSearching}
               isLoading={isLoading}
               savedAdCounter={savedAdCounter}
+              searchBarText={searchBarText}
             />
           </Col>
         </Row>
