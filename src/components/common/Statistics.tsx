@@ -24,7 +24,7 @@ const Statistics = (props: Props) => {
     <Container>
       <Row>
         <Col sm={12}>
-          <VerticalBar searchString={props.searchBarText} />
+          {/* <VerticalBar searchString={props.searchBarText} /> */}
           <Row style={{ textAlign: "center", paddingTop: "2rem" }}>
             <p
               style={{
