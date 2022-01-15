@@ -198,19 +198,6 @@ const AdCardList = (props: AdCardData) => {
                     </Button>{" "}
                   </Col>
                   <Col sm={1}>
-                    {/* <Dropdown size="sm" onSelect={(e) => setPageSize(e)}>
-                      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                        {pageSize}
-                      </Dropdown.Toggle>
-
-                      <Dropdown.Menu>
-                        <Dropdown.Item eventKey="5">5</Dropdown.Item>
-                        <Dropdown.Item eventKey="10">10</Dropdown.Item>
-                        <Dropdown.Item eventKey="20">20</Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown> */}
-
-
                     <DropdownButton  size="sm" id="dropdown-basic-button" variant="secondary" title={pageSize} onSelect={(e) => setPageSize(e)}>
                       <Dropdown.Item eventKey="5">5</Dropdown.Item>
                       <Dropdown.Item eventKey="10">10</Dropdown.Item>
