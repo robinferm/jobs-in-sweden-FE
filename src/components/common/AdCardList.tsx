@@ -19,7 +19,7 @@ interface AdCardData {
 }
 
 const AdCardList = (props: AdCardData) => {
-  const [pageSize, setPageSize] = useState(5);
+  const [pageSize, setPageSize] = useState("5");
   return (
     <div>
       <Container className="MainContainer">
@@ -139,7 +139,7 @@ const AdCardList = (props: AdCardData) => {
                 <Accordion flush>
                   {props.apiData === null
                     ? null
-                    : props.apiData.map((job: any, index: number) =>
+                    : props.apiData.map((job: any, index: string) =>
                       index >= pageSize ? null : <JobCard savedAdCounter={props.savedAdCounter} key={job.id} job={job} />
                       )}
                 </Accordion>
