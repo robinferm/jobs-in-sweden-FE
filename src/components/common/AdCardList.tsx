@@ -1,8 +1,9 @@
 import "./css/AdCardList.css";
 import React from "react";
-import { Row, Col, Container, Button, Accordion } from "react-bootstrap";
+import { Row, Col, Container, Button, Accordion, Dropdown, DropdownButton } from "react-bootstrap";
 import JobCard from "./JobCard";
 import Statistics from "./Statistics";
+import { useState } from "react";
 
 interface AdCardData {
   pageNumber: number;
@@ -18,6 +19,7 @@ interface AdCardData {
 }
 
 const AdCardList = (props: AdCardData) => {
+  const [pageSize, setPageSize] = useState(5);
   return (
     <div>
       <Container className="MainContainer">
@@ -137,12 +139,12 @@ const AdCardList = (props: AdCardData) => {
                 <Accordion flush>
                   {props.apiData === null
                     ? null
-                    : props.apiData.map((job: any) => (
-                        <JobCard savedAdCounter={props.savedAdCounter} key={job.id} job={job} />
-                      ))}
+                    : props.apiData.map((job: any, index: number) =>
+                      index >= pageSize ? null : <JobCard savedAdCounter={props.savedAdCounter} key={job.id} job={job} />
+                      )}
                 </Accordion>
                 <Row style={{ textAlign: "center", paddingTop: "1rem" }}>
-                  <Col>
+                  <Col sm={11}>
                     <Button
                       variant="secondary"
                       size="sm"
@@ -195,6 +197,26 @@ const AdCardList = (props: AdCardData) => {
                       Nästa
                     </Button>{" "}
                   </Col>
+                  <Col sm={1}>
+                    {/* <Dropdown size="sm" onSelect={(e) => setPageSize(e)}>
+                      <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                        {pageSize}
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+                        <Dropdown.Item eventKey="5">5</Dropdown.Item>
+                        <Dropdown.Item eventKey="10">10</Dropdown.Item>
+                        <Dropdown.Item eventKey="20">20</Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown> */}
+
+
+                    <DropdownButton  size="sm" id="dropdown-basic-button" variant="secondary" title={pageSize} onSelect={(e) => setPageSize(e)}>
+                      <Dropdown.Item eventKey="5">5</Dropdown.Item>
+                      <Dropdown.Item eventKey="10">10</Dropdown.Item>
+                      <Dropdown.Item eventKey="20">20</Dropdown.Item>
+                    </DropdownButton>
+                </Col>
                 </Row>
               </div>
             ) : (
