@@ -200,17 +200,17 @@ const AdCardList = (props: AdCardData) => {
                     <Button variant="primary" size="sm">
                       {props.pageNumber}
                     </Button>{" "}
-                    <Button variant="secondary" size="sm">
+                    <Button variant="secondary" size="sm" onClick={(e) => props.recieveDataFromAdCardListChild(props.pageNumber + 1)}>
                       {props.pageNumber + 1}
                     </Button>{" "}
-                    <Button variant="secondary" size="sm">
+                    <Button variant="secondary" size="sm" onClick={(e) => props.recieveDataFromAdCardListChild(props.pageNumber + 2)}>
                       {props.pageNumber + 2}
                     </Button>{" "}
-                    <Button variant="secondary" size="sm">
+                    <Button variant="secondary" size="sm" onClick={(e) => props.recieveDataFromAdCardListChild(props.pageNumber + 3)}>
                       {props.pageNumber + 3}
                     </Button>{" "}
                     {props.pageNumber === 1 ? (
-                      <Button variant="secondary" size="sm">
+                      <Button variant="secondary" size="sm" onClick={(e) => props.recieveDataFromAdCardListChild(props.pageNumber + 4)}>
                         {props.pageNumber + 4}
                       </Button>
                     ) : null}{" "}
