@@ -144,6 +144,22 @@ const AdCardList = (props: AdCardData) => {
           <Row>
             {props.isWatchingAdSection ? (
               <div>
+                <Row style={{textAlign:"right", paddingRight:"1.3rem"}}>
+                <Col>
+                <span style={{fontSize:"11px"}}>Antal annonser per sida</span>
+                    <DropdownButton
+                      size="sm"
+                      id="dropdown-basic-button"
+                      variant="secondary"
+                      title={pageSize}
+                      onSelect={(e) => setPageSize(e)}
+                    >
+                      <Dropdown.Item eventKey="5">5</Dropdown.Item>
+                      <Dropdown.Item eventKey="10">10</Dropdown.Item>
+                      <Dropdown.Item eventKey="20">20</Dropdown.Item>
+                    </DropdownButton>
+                  </Col>
+                </Row>
                 <Accordion flush>
                   {props.apiData === null
                     ? null
@@ -158,7 +174,7 @@ const AdCardList = (props: AdCardData) => {
                       )}
                 </Accordion>
                 <Row style={{ textAlign: "center", paddingTop: "1rem" }}>
-                  <Col sm={11}>
+                  <Col sm={12}>
                     <Button
                       variant="secondary"
                       size="sm"
@@ -211,19 +227,6 @@ const AdCardList = (props: AdCardData) => {
                     >
                       Nästa
                     </Button>{" "}
-                  </Col>
-                  <Col sm={1}>
-                    <DropdownButton
-                      size="sm"
-                      id="dropdown-basic-button"
-                      variant="secondary"
-                      title={pageSize}
-                      onSelect={(e) => setPageSize(e)}
-                    >
-                      <Dropdown.Item eventKey="5">5</Dropdown.Item>
-                      <Dropdown.Item eventKey="10">10</Dropdown.Item>
-                      <Dropdown.Item eventKey="20">20</Dropdown.Item>
-                    </DropdownButton>
                   </Col>
                 </Row>
               </div>
