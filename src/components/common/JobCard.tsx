@@ -1,10 +1,11 @@
 import "./css/JobCard.css";
-import { Col, Row, Accordion } from "react-bootstrap";
+import { Col, Row, Accordion, Button } from "react-bootstrap";
 import { Star, StarFill } from "react-bootstrap-icons";
 import { useState, useEffect } from "react";
 
 const JobCard = (props: any) => {
   const publicationString = props.job.publication_date.replace(/T|Z/g, " ");
+  const deadlineString = props.job.deadline.replace(/T|Z/g, " ");
   const [isSaved, setSaved] = useState(false);
 
   useEffect(() => {
@@ -34,6 +35,11 @@ const JobCard = (props: any) => {
 
     localStorage.setItem("allEntries", JSON.stringify(existingEntries));
   }
+
+  const openInNewTab = (url:string) => {
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+    if (newWindow) newWindow.opener = null;
+  };
 
   const toggleSaved = (e: any, id: string) => {
     e.stopPropagation();
@@ -86,7 +92,47 @@ const JobCard = (props: any) => {
         </span>
       </Accordion.Header>
       <Accordion.Body>
-        <div className="CardDescription">{props.job.description.text}</div>
+        <Row style={{ height: "5rem" }}>
+          <Col sm={8}>
+            <p style={{ fontWeight: "600", fontSize: "1rem" }}>
+              {props.job.occupation.label}
+              <br />
+              <span style={{ fontWeight: "400", fontSize: ".75rem" }}>
+                {props.job.working_hours_type.label} {props.job.duration.label}
+                <br />
+                {props.job.salary_type.label}
+                {props.job.employer.url !== null ? (
+                  <span>
+                    <br />
+                    Webadress:{" "}
+                    <a target="_blank" href={props.job.employer.url}>
+                      {props.job.employer.url}
+                    </a>
+                  </span>
+                ) : null}
+              </span>
+            </p>
+          </Col>
+          <Col sm={4} style={{ textAlign: "right", paddingTop: "1.5rem" }}>
+            <Button
+              size="lg"
+              variant="outline-dark"
+              disabled={props.job.removed}
+              onClick={() =>
+                openInNewTab(
+                  !props.job.application_details.via_af && props.job.application_details.url !== null
+                    ? props.job.application_details.url
+                    : props.job.webpage_url
+                )
+              }
+            >
+              Ansök nu!
+            </Button>{" "}
+          </Col>
+        </Row>
+        <Row style={{ marginTop: "2rem", fontSize: ".75rem" }}>
+          <Col>{props.job.description.text}</Col>
+        </Row>
       </Accordion.Body>
     </Accordion.Item>
   );
