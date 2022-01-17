@@ -24,6 +24,7 @@ const Home = () => {
   // Callback function to receive what page number user is at on AdCardList.tsx
   const recieveDataFromAdCardListChild = (page: number) => {
     setCurrentPage(page);
+    window.scrollTo(0,0);
   };
 
   // Callback function to change state of isWatchingAdSection from AdCardList.tsx
