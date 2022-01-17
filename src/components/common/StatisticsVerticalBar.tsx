@@ -72,7 +72,7 @@ const StatisticsVerticalBar = (props: Props) => {
     labels,
     datasets: [
       {
-        label: "Annonser relaterat till " + props.searchTerm,
+        label: "Annonser relaterat till " + props.searchTerm + " 2021",
         data: statisticData,
         backgroundColor: "rgba(39, 38, 53, .8)",
       },
