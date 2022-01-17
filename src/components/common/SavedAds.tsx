@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Row, Col, Container } from "react-bootstrap";
 
 const SavedAds = (props: any) => {
   const [queryString, setQueryString] = useState("");

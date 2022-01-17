@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Header from "../common/Header";
 import AdCardList from "../common/AdCardList";
 import { Row, Col, Container } from "react-bootstrap";
-import JobCard from "../common/JobCard";
 import SavedAds from "../common/SavedAds";
 
 const Home = () => {

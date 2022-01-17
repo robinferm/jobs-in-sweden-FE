@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Row, Col, Container } from "react-bootstrap";
-import { StringMappingType } from "typescript";
 import VerticalBar from "./StatisticsVerticalBar";
 
 interface Props {
