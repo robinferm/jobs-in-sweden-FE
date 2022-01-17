@@ -1,8 +1,17 @@
 import "./css/AdCardList.css";
 import React from "react";
-import { Row, Col, Container, Button, Accordion } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Container,
+  Button,
+  Accordion,
+  Dropdown,
+  DropdownButton,
+} from "react-bootstrap";
 import JobCard from "./JobCard";
 import Statistics from "./Statistics";
+import { useState } from "react";
 
 interface AdCardData {
   pageNumber: number;
@@ -13,11 +22,13 @@ interface AdCardData {
   apiData: any;
   isSearching: boolean;
   isLoading: boolean;
-  savedAdCounter: any;
-  searchBarText: string;
+  savedAdCounter: any ;
+  searchTerm: string;
+  searchCount: number;
 }
 
 const AdCardList = (props: AdCardData) => {
+  const [pageSize, setPageSize] = useState<string | null>("10");
   return (
     <div>
       <Container className="MainContainer">
@@ -134,15 +145,39 @@ const AdCardList = (props: AdCardData) => {
           <Row>
             {props.isWatchingAdSection ? (
               <div>
+                <Row style={{ textAlign: "right", paddingRight: "1.3rem" }}>
+                  <Col>
+                    <span style={{ fontSize: "11px" }}>
+                      Antal annonser per sida
+                    </span>
+                    <DropdownButton
+                      size="sm"
+                      id="dropdown-basic-button"
+                      variant="secondary"
+                      title={pageSize}
+                      onSelect={(e) => setPageSize(e)}
+                    >
+                      <Dropdown.Item eventKey="5">5</Dropdown.Item>
+                      <Dropdown.Item eventKey="10">10</Dropdown.Item>
+                      <Dropdown.Item eventKey="20">20</Dropdown.Item>
+                    </DropdownButton>
+                  </Col>
+                </Row>
                 <Accordion flush>
                   {props.apiData === null
                     ? null
-                    : props.apiData.map((job: any) => (
-                        <JobCard savedAdCounter={props.savedAdCounter} key={job.id} job={job} />
-                      ))}
+                    : props.apiData.map((job: any, index: string) =>
+                        pageSize !== null && index >= pageSize ? null : (
+                          <JobCard
+                            savedAdCounter={props.savedAdCounter}
+                            key={job.id}
+                            job={job}
+                          />
+                        )
+                      )}
                 </Accordion>
                 <Row style={{ textAlign: "center", paddingTop: "1rem" }}>
-                  <Col>
+                  <Col sm={12}>
                     <Button
                       variant="secondary"
                       size="sm"
@@ -168,19 +203,52 @@ const AdCardList = (props: AdCardData) => {
                     <Button variant="primary" size="sm">
                       {props.pageNumber}
                     </Button>{" "}
-                    <Button variant="secondary" size="sm">
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={(e) =>
+                        props.recieveDataFromAdCardListChild(
+                          props.pageNumber + 1
+                        )
+                      }
+                    >
                       {props.pageNumber + 1}
                     </Button>{" "}
-                    <Button variant="secondary" size="sm">
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={(e) =>
+                        props.recieveDataFromAdCardListChild(
+                          props.pageNumber + 2
+                        )
+                      }
+                    >
                       {props.pageNumber + 2}
                     </Button>{" "}
-                    <Button variant="secondary" size="sm">
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={(e) =>
+                        props.recieveDataFromAdCardListChild(
+                          props.pageNumber + 3
+                        )
+                      }
+                    >
                       {props.pageNumber + 3}
                     </Button>{" "}
-                    {props.pageNumber === 1 ?                     <Button variant="secondary" size="sm">
-                      {props.pageNumber + 4}
-                    </Button> : null }
-                    {" "}
+                    {props.pageNumber === 1 ? (
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={(e) =>
+                          props.recieveDataFromAdCardListChild(
+                            props.pageNumber + 4
+                          )
+                        }
+                      >
+                        {props.pageNumber + 4}
+                      </Button>
+                    ) : null}{" "}
                     <Button
                       variant="secondary"
                       size="sm"
@@ -198,7 +266,10 @@ const AdCardList = (props: AdCardData) => {
                 </Row>
               </div>
             ) : (
-              <Statistics searchBarText={props.searchBarText}/>
+              <Statistics
+                searchTerm={props.searchTerm}
+                searchCount={props.searchCount}
+              />
             )}
           </Row>
         </Row>

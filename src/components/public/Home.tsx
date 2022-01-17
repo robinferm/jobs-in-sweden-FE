@@ -2,8 +2,8 @@ import "./css/Home.css";
 import { useState, useEffect } from "react";
 import Header from "../common/Header";
 import AdCardList from "../common/AdCardList";
+import SingleAdList from "../common/SingleAdList";
 import { Row, Col, Container } from "react-bootstrap";
-import JobCard from "../common/JobCard";
 import SavedAds from "../common/SavedAds";
 
 const Home = () => {
@@ -17,10 +17,14 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [prevPageNumber, setPrevPageNumber] = useState(1);
   const [adCounter, setAdCounter] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isWatchingSingleAd, setIsWatchingSingleAd] = useState(false);
+  const [singleAdData, setSingleAdData] = useState({});
 
   // Callback function to receive what page number user is at on AdCardList.tsx
   const recieveDataFromAdCardListChild = (page: number) => {
     setCurrentPage(page);
+    window.scrollTo(0,0);
   };
 
   // Callback function to change state of isWatchingAdSection from AdCardList.tsx
@@ -38,7 +42,30 @@ const Home = () => {
     setIsSearching((prevSaved) => !prevSaved);
     setSearchBarText("");
     setCurrentPage(prevPageNumber);
-  }
+    setSearchCount(0);
+  };
+
+  // Callback function to change isWatchingSingleAd to true from SavedAds.txt
+  const callbackChangeisWatchingSingleAdTrue = () => {
+    setIsWatchingSingleAd(true);
+  };
+
+  // Callback function to change isWatchingSingleAd to false from SingleAdList.txt
+  const callbackChangeisWatchingSingleAdFalse = () => {
+    setIsWatchingSingleAd(false);
+
+  };
+
+  // Callback function to change singleAdId from SavedAds.txt
+  const callbackChangeSingleAdData = (arr: any, id: string) => {
+    var array = [];
+    for (let i = 0; i < arr.length; i++) {
+      if(arr[i].id === id) {
+        array.push(arr[i]);
+        setSingleAdData(array);
+      }
+    }
+  };
 
   // Callback function to know when user request a new search for ads in Header.tsx
   const newSearch = async (event: any) => {
@@ -46,15 +73,16 @@ const Home = () => {
     if (searchBarText === "") return;
     if (currentPage !== 1) {
       setPrevPageNumber(currentPage);
-      setCurrentPage(1);} 
+      setCurrentPage(1);
+    }
     setIsSearching(true);
     setSearchCount(searchCount + 1);
+    setSearchTerm(searchBarText);
   };
 
   const savedAdCounter = () => {
     setAdCounter(adCounter + 1);
-    console.log(adCounter);
-  }
+  };
 
   // Fetch total ad count in database
   const fetchAdCount = () => {
@@ -90,6 +118,7 @@ const Home = () => {
       setIsLoading(false);
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, isSearching, searchCount]);
 
   return (
@@ -106,30 +135,46 @@ const Home = () => {
             <Container style={{ textAlign: "left" }}>
               <span
                 style={{
-                  marginLeft: "0.5rem",
                   color: "gray",
                   cursor: "default",
                   fontSize: "12px",
+                  display: "inline-block",
+                  height: "2rem",
                 }}
               >
                 Sparade annonser
-                <SavedAds savedAdCounter={savedAdCounter}/>
               </span>
+              <SavedAds
+                savedAdCounter={savedAdCounter}
+                callbackChangeisWatchingSingleAdTrue={callbackChangeisWatchingSingleAdTrue}
+                callbackChangeSingleAdData={callbackChangeSingleAdData}
+              />
             </Container>
           </Col>
           <Col sm={9} className="LatestAdsContainer">
-            <AdCardList
-              apiData={latestAdApiData}
-              pageNumber={currentPage}
-              recieveDataFromAdCardListChild={recieveDataFromAdCardListChild}
-              isWatchingAdSection={isWatchingAdSection}
-              changeIsWatchingAdSection={changeIsWatchingAdSection}
-              isSearching={isSearching}
-              changeIsSearching={changeIsSearching}
-              isLoading={isLoading}
-              savedAdCounter={savedAdCounter}
-              searchBarText={searchBarText}
-            />
+            {!isWatchingSingleAd ? (
+              <AdCardList
+                apiData={latestAdApiData}
+                pageNumber={currentPage}
+                recieveDataFromAdCardListChild={recieveDataFromAdCardListChild}
+                isWatchingAdSection={isWatchingAdSection}
+                changeIsWatchingAdSection={changeIsWatchingAdSection}
+                isSearching={isSearching}
+                changeIsSearching={changeIsSearching}
+                isLoading={isLoading}
+                savedAdCounter={savedAdCounter}
+                searchTerm={searchTerm}
+                searchCount={searchCount}
+              />
+            ) : (
+              <SingleAdList
+                callbackChangeisWatchingSingleAdFalse={
+                  callbackChangeisWatchingSingleAdFalse
+                }
+                singleAdData={singleAdData}
+                savedAdCounter={savedAdCounter}
+              />
+            )}
           </Col>
         </Row>
       </Container>
