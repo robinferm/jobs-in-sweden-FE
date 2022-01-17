@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 
 const JobCard = (props: any) => {
   const publicationString = props.job.publication_date.replace(/T|Z/g, " ");
-  const deadlineString = props.job.deadline.replace(/T|Z/g, " ");
   const [isSaved, setSaved] = useState(false);
 
   useEffect(() => {
@@ -16,6 +15,7 @@ const JobCard = (props: any) => {
         setSaved(true);
       } else setSaved(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.savedAdCounter, isSaved]);
 
   function toggleLocalStorage(entry: string) {
@@ -105,7 +105,7 @@ const JobCard = (props: any) => {
                   <span>
                     <br />
                     Webadress:{" "}
-                    <a target="_blank" href={props.job.employer.url}>
+                    <a target="_blank" rel="noreferrer" href={props.job.employer.url}>
                       {props.job.employer.url}
                     </a>
                   </span>

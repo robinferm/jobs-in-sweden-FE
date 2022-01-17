@@ -55,8 +55,14 @@ const SavedAds = (props: any) => {
     }
   };
 
-  useEffect(() => getSavedAds(), [props.savedAdCounter]);
-  useEffect(() => getAdsData(), [queryString]);
+  useEffect(() => {
+    getSavedAds();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.savedAdCounter]);
+  useEffect(() => {
+    getAdsData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [queryString]);
   return (
     <>
       {savedAdsData.length === 0 ? (
@@ -75,7 +81,13 @@ const SavedAds = (props: any) => {
               cursor: "pointer",
             }}
           >
-            <Col sm={10} onClick={() => (props.callbackChangeisWatchingSingleAdTrue(), props.callbackChangeSingleAdData(savedAdsData, job.id))}>
+            <Col
+              sm={10}
+              onClick={() => (
+                props.callbackChangeisWatchingSingleAdTrue(),
+                props.callbackChangeSingleAdData(savedAdsData, job.id)
+              )}
+            >
               <div>
                 {job.headline.length < 35
                   ? job.headline

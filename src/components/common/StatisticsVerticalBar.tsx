@@ -129,6 +129,7 @@ const StatisticsVerticalBar = (props: Props) => {
                     break;
                   }
                 }
+                return <></>
               })}
               <p style={{ fontSize: "0" }}>
                 {/* For some reason, JSX tries to write out the lenght of the array here without making the text.. invisiable... tell me whyyyyyy */}

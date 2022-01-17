@@ -15,6 +15,7 @@ const JobCard = (props: any) => {
         setSaved(true);
       } else setSaved(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.savedAdCounter, isSaved]);
 
   function toggleLocalStorage(entry: string) {
@@ -108,7 +109,7 @@ const JobCard = (props: any) => {
                     <span>
                       <br />
                       Webadress:{" "}
-                      <a target="_blank" href={props.job.employer.url}>
+                      <a target="_blank" rel="noreferrer" href={props.job.employer.url}>
                         {props.job.employer.url}
                       </a>
                     </span>
