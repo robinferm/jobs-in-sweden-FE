@@ -10,33 +10,34 @@ const JobCard = (props: any) => {
   useEffect(() => {
     // @ts-ignore
     var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
-    if(existingEntries !== null){
-      if(existingEntries.includes(props.job.id)) setSaved(true);
+    if (existingEntries !== null) {
+      if (existingEntries.includes(props.job.id)) {
+        setSaved(true);
+      } else setSaved(false);
     }
-  }, []);
+  }, [props.savedAdCounter, isSaved]);
 
   function toggleLocalStorage(entry: string) {
     // Parse any JSON previously stored in allEntries
     // @ts-ignore
     var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
-    if(existingEntries == null) existingEntries = [];
+    if (existingEntries == null) existingEntries = [];
 
-    const index = existingEntries.indexOf(entry)
-    if(existingEntries.includes(entry)){
-      existingEntries.splice(index, 1)
-    }
-    else{
+    const index = existingEntries.indexOf(entry);
+    if (existingEntries.includes(entry)) {
+      existingEntries.splice(index, 1);
+    } else {
       localStorage.setItem("entry", JSON.stringify(entry));
       // Save allEntries back to local storage
       existingEntries.push(entry);
     }
 
     localStorage.setItem("allEntries", JSON.stringify(existingEntries));
-  };
+  }
 
   const toggleSaved = (e: any, id: string) => {
     e.stopPropagation();
-    toggleLocalStorage(id)
+    toggleLocalStorage(id);
     setSaved((prevSaved) => !prevSaved);
     props.savedAdCounter();
   };
@@ -55,9 +56,7 @@ const JobCard = (props: any) => {
                 <div className="CardTitle">{props.job.headline}</div>
               </Row>
               <Row>
-                <div className="CardDescription">
-                  {props.job.employer.name}
-                </div>
+                <div className="CardDescription">{props.job.employer.name}</div>
               </Row>
               <Row>
                 <Col>
@@ -65,8 +64,7 @@ const JobCard = (props: any) => {
                   <Row>
                     {" "}
                     <div className="CardPublicationDate">
-                      Publicerad: {" "}
-                      {publicationString}
+                      Publicerad: {publicationString}
                     </div>
                   </Row>
                 </Col>

@@ -56,7 +56,6 @@ const Home = () => {
 
   const savedAdCounter = () => {
     setAdCounter(adCounter + 1);
-    console.log(adCounter);
   };
 
   // Fetch total ad count in database
@@ -107,17 +106,18 @@ const Home = () => {
         <Row>
           <Col sm={3} className="SavedAdsContainer">
             <Container style={{ textAlign: "left" }}>
-              <span
+            <span
                 style={{
-                  marginLeft: "0.5rem",
                   color: "gray",
                   cursor: "default",
                   fontSize: "12px",
+                  display: "inline-block",
+                  height: "2rem",
                 }}
               >
                 Sparade annonser
-                <SavedAds savedAdCounter={savedAdCounter} />
               </span>
+              <SavedAds savedAdCounter={savedAdCounter} />
             </Container>
           </Col>
           <Col sm={9} className="LatestAdsContainer">
