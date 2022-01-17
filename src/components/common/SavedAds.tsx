@@ -77,9 +77,9 @@ const SavedAds = (props: any) => {
           >
             <Col sm={10}>
               <div>
-                {job.headline.length < 40
+                {job.headline.length < 35
                   ? job.headline
-                  : job.headline.substring(0, 40) + "..."}
+                  : job.headline.substring(0, 35) + "..."}
               </div>
             </Col>
             <Col
