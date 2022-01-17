@@ -75,7 +75,7 @@ const SavedAds = (props: any) => {
               cursor: "pointer",
             }}
           >
-            <Col sm={10}>
+            <Col sm={10} onClick={() => (props.callbackChangeisWatchingSingleAdTrue(), props.callbackChangeSingleAdData(savedAdsData, job.id))}>
               <div>
                 {job.headline.length < 35
                   ? job.headline
