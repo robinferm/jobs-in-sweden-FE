@@ -22,12 +22,13 @@ interface AdCardData {
   apiData: any;
   isSearching: boolean;
   isLoading: boolean;
-  savedAdCounter: any;
-  searchBarText: string;
+  savedAdCounter: any ;
+  searchTerm: string;
+  searchCount: number;
 }
 
 const AdCardList = (props: AdCardData) => {
-  const [pageSize, setPageSize] = useState<string | null>("5");
+  const [pageSize, setPageSize] = useState<string | null>("10");
   return (
     <div>
       <Container className="MainContainer">
@@ -144,9 +145,11 @@ const AdCardList = (props: AdCardData) => {
           <Row>
             {props.isWatchingAdSection ? (
               <div>
-                <Row style={{textAlign:"right", paddingRight:"1.3rem"}}>
-                <Col>
-                <span style={{fontSize:"11px"}}>Antal annonser per sida</span>
+                <Row style={{ textAlign: "right", paddingRight: "1.3rem" }}>
+                  <Col>
+                    <span style={{ fontSize: "11px" }}>
+                      Antal annonser per sida
+                    </span>
                     <DropdownButton
                       size="sm"
                       id="dropdown-basic-button"
@@ -200,17 +203,49 @@ const AdCardList = (props: AdCardData) => {
                     <Button variant="primary" size="sm">
                       {props.pageNumber}
                     </Button>{" "}
-                    <Button variant="secondary" size="sm" onClick={(e) => props.recieveDataFromAdCardListChild(props.pageNumber + 1)}>
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={(e) =>
+                        props.recieveDataFromAdCardListChild(
+                          props.pageNumber + 1
+                        )
+                      }
+                    >
                       {props.pageNumber + 1}
                     </Button>{" "}
-                    <Button variant="secondary" size="sm" onClick={(e) => props.recieveDataFromAdCardListChild(props.pageNumber + 2)}>
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={(e) =>
+                        props.recieveDataFromAdCardListChild(
+                          props.pageNumber + 2
+                        )
+                      }
+                    >
                       {props.pageNumber + 2}
                     </Button>{" "}
-                    <Button variant="secondary" size="sm" onClick={(e) => props.recieveDataFromAdCardListChild(props.pageNumber + 3)}>
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={(e) =>
+                        props.recieveDataFromAdCardListChild(
+                          props.pageNumber + 3
+                        )
+                      }
+                    >
                       {props.pageNumber + 3}
                     </Button>{" "}
                     {props.pageNumber === 1 ? (
-                      <Button variant="secondary" size="sm" onClick={(e) => props.recieveDataFromAdCardListChild(props.pageNumber + 4)}>
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={(e) =>
+                          props.recieveDataFromAdCardListChild(
+                            props.pageNumber + 4
+                          )
+                        }
+                      >
                         {props.pageNumber + 4}
                       </Button>
                     ) : null}{" "}
@@ -231,7 +266,10 @@ const AdCardList = (props: AdCardData) => {
                 </Row>
               </div>
             ) : (
-              <Statistics searchBarText={props.searchBarText} />
+              <Statistics
+                searchTerm={props.searchTerm}
+                searchCount={props.searchCount}
+              />
             )}
           </Row>
         </Row>
